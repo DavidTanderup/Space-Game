@@ -248,10 +248,19 @@ namespace UserInterface
     }
     public class Menu
     {
+        /// <summary>
+        /// Prints the Main Welcome Menu 
+        /// </summary>
         public void WelcomeMenu()
         {
-            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\n\n\n\n\n");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\t===================================================================================");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("\t===================================================================================");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("\t===================================================================================");
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\t SSSSSS  TTTTTT  AAAAAA  RRRRRR     TTTTTT  RRRRRR  AAAAAA  DDDDDD   EEEEEE  RRRRRR");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\t SS  SS    TT    AA  AA  RR  RR       TT    RR  RR  AA  AA  DD   DD  EE      RR  RR");
@@ -263,6 +272,12 @@ namespace UserInterface
             Console.WriteLine("\tSS  SS     TT    AA  AA  RR  RR       TT    RR  RR  AA  AA  DD   DD  EE      RR  RR");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("\tSSSSSS     TT    AA  AA  RR  RR       TT    RR  RR  AA  AA  DDDDDD   EEEEEE  RR  RR");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\t===================================================================================");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("\t===================================================================================");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("\t===================================================================================");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("\n\n\n\nBrought to you by");
             Console.ForegroundColor = ConsoleColor.Red;
