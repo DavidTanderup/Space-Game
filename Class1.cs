@@ -125,17 +125,14 @@ namespace SpaceCadets
                                                  "shol ni-jun", "shennesa knam-dox", "mes en-ruth","shilla qox-enth",
                                                  "zesla luv-bunth","kidna tor-nez","dava vutel","nin nuk-gith" };
             string characterName = "";
-            string gender = "";
             if (randomGender == 1)
             {
                 characterName = Convert.ToString(maleNames[randomName]);
-                gender = "Male";
 
             }
             else
             {
                 characterName = Convert.ToString(femaleNames[randomName]);
-                gender = "Female";
             }
             return characterName; /// TODO: update return type.
 
@@ -292,6 +289,7 @@ namespace UserInterface
         /// </summary>
         public void WelcomeMenu()
         {
+            
             Console.WriteLine("\n\n\n\n\n");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\t===================================================================================");
