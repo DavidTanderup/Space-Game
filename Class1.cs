@@ -103,10 +103,49 @@ namespace SpaceCadets
         public string CharacterRace { get; set; }
         public int CharacterIntelligence { get; set; }
         public string HomePlanet { get; set; }
+        public bool CharacterGender { get; set; }
 
+        /// <summary>
+        /// Create more Random name / Character Generator
+        /// </summary>
+        /// <returns></returns>
+        public string KryptonianName()
+        {
+            Random random = new Random();
+            int randomName = random.Next(0, 19);
+            int randomGender = random.Next(0, 2);
+
+            string[] maleNames = new string[] { "kav-jol","lall-zath","sok-ith","il-lud", "nil-ma", "knu-lall",
+                                                "tik-dug", "kil-gon","si-dal", "pol-al", "wall-tul","mikall",
+                                                "hin-lall", "mil-jux", "zill-mul","lonninth","ras-kisk", "senn-kix",
+                                                "gil-dus", "jill-bath"};
+            string[] femaleNames = new string[] {"mon qorn-zes","dolyra will-dith","kin la-byk","medna ver-rid",
+                                                 "alrulia os-jez","zalga jib-rek", "zilgi knyv-nol", "thoahlira mogul",
+                                                 "ylgana liz-duk","myslini nirn-tol", "ostra rill-mur", "felga zek-kunth",
+                                                 "shol ni-jun", "shennesa knam-dox", "mes en-ruth","shilla qox-enth",
+                                                 "zesla luv-bunth","kidna tor-nez","dava vutel","nin nuk-gith" };
+            string characterName = "";
+            string gender = "";
+            if (randomGender == 1)
+            {
+                characterName = Convert.ToString(maleNames[randomName]);
+                gender = "Male";
+
+            }
+            else
+            {
+                characterName = Convert.ToString(femaleNames[randomName]);
+                gender = "Female";
+            }
+            return characterName; /// TODO: update return type.
+
+
+
+
+        }
        
     }
-
+    
 
 }
 namespace Graphics
@@ -115,20 +154,20 @@ namespace Graphics
     /// Represents Map Coordinate
     /// </summary>
 
-    class Coordinate
+    public class Coordinate
     {
         public int X { get; set; } //Left
         public int Y { get; set; } //Top
     }
 
-    class Movement
+    public class Movement
     {
         const ConsoleColor HERO_COLOR = ConsoleColor.Red;
         const ConsoleColor BACKGROUND_COLOR = ConsoleColor.Black;
 
         public static Coordinate Hero { get; set; } /// our fearless hero
 
-        public void MovementMain(string[] args)
+        public void MovementMain()
         {
             InitGame();
 
@@ -288,7 +327,14 @@ namespace UserInterface
             Console.WriteLine("David Tanderup");
             Console.ReadLine();
         }
+        /// <summary>
+        ///  TODO: Will take input from the world's list
+        /// </summary>
+        public void GPSMenu()
+        {
 
+
+        }
 
 
 
