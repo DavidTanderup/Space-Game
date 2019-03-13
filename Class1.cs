@@ -13,7 +13,6 @@ namespace SpaceCadets
 
     }
 
-
     public class Planet
     {
         public string PlanetName { get; set; }
@@ -22,6 +21,7 @@ namespace SpaceCadets
         public string PlanetBio { get; set; }
         public bool PlanetExsistance { get; set; }
 
+        
 
 
 
@@ -30,6 +30,11 @@ namespace SpaceCadets
         /// </summary>
         public List<Planet> PlanetSystem()
         {
+
+
+
+
+
             List<Planet> Galaxy = new List<Planet>()
         {
                                
@@ -73,8 +78,8 @@ namespace SpaceCadets
             "trigger an explosive chain reaction within Krypton's core almost immediately. The use of the Destroyer eliminated the Post-Crisis city of Kandor, but it was " +
             "believed at the time that the device had been stopped before it could achieve planetary destruction (by Van-L, an ancestor of Jor-El). Centuries later, Jor-El " +
             "himself would discover that the reaction had only been slowed to a nearly imperceptible rate and it will eventually destroy the planet as intended."+
-            "\n\tPresent Day Krypton" +
-            8;
+            "\n\tPresent Day Krypton" 
+          ;
 
             return kryptonBio;
         }
@@ -82,9 +87,6 @@ namespace SpaceCadets
         
 
     }
-
-   
-
 
     public class Resources
     {
@@ -94,6 +96,18 @@ namespace SpaceCadets
         public int Size { get; set; }
 
     }
+
+   public class Characters
+    {
+        public string CharacterName { get; set; }
+        public string CharacterRace { get; set; }
+        public int CharacterIntelligence { get; set; }
+        public string HomePlanet { get; set; }
+
+       
+    }
+
+
 }
 namespace Graphics
 {
@@ -226,3 +240,45 @@ namespace Graphics
 
 }
 
+namespace UserInterface
+{
+    public class Navigation
+    {
+ 
+    }
+    public class Menu
+    {
+        public void WelcomeMenu()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n\n\n\n\n");
+            Console.WriteLine("\t SSSSSS  TTTTTT  AAAAAA  RRRRRR     TTTTTT  RRRRRR  AAAAAA  DDDDDD   EEEEEE  RRRRRR");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("\t SS  SS    TT    AA  AA  RR  RR       TT    RR  RR  AA  AA  DD   DD  EE      RR  RR");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("\t  SS       TT    AA  AA  RRRRRR       TT    RRRRRR  AA  AA  DD   DD  EEEEEE  RRRRRR");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\t   SS      TT    AAAAAA  RR RR        TT    RR RR   AAAAAA  DD   DD  EEEEEE  RR RR");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("\tSS  SS     TT    AA  AA  RR  RR       TT    RR  RR  AA  AA  DD   DD  EE      RR  RR");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("\tSSSSSS     TT    AA  AA  RR  RR       TT    RR  RR  AA  AA  DDDDDD   EEEEEE  RR  RR");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("\n\n\n\nBrought to you by");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Parker Eastman");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("      &&      ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("David Tanderup");
+            Console.ReadLine();
+        }
+
+
+
+
+    }
+
+
+
+}
