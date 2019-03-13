@@ -6,13 +6,21 @@ using System.Threading.Tasks;
 
 namespace SpaceCadets
 {
+    public class ForeignObjectDebris
+    {
+        public double FODLocation { get; set; }
+        public string ObjectType { get; set; }
+
+    }
+
+
     public class Planet
     {
-        private string PlanetName { get; set; }
-        private Tuple<double, double> PlanetCoordinate { get; set; }
-        private double PlanetSize { get; set; }
-        private string PlanetBio { get; set; }
-        private bool PlanetExsistance { get; set; }
+        public string PlanetName { get; set; }
+        public (double, double) PlanetCoordinate { get; set; }
+        public double PlanetSize { get; set; }
+        public string PlanetBio { get; set; }
+        public bool PlanetExsistance { get; set; }
 
 
 
@@ -25,13 +33,13 @@ namespace SpaceCadets
             List<Planet> Galaxy = new List<Planet>()
         {
                                
-            new Planet{PlanetName = "Earth", PlanetSize = 1, PlanetCoordinate = new Tuple <double,double>(0,0), PlanetBio = "", PlanetExsistance = true},
-            new Planet{PlanetName = "Moon", PlanetSize = .27, PlanetCoordinate = new Tuple<double, double>(.0002,.00025), PlanetBio = "", PlanetExsistance = true},
-            new Planet{PlanetName = "Proxima b", PlanetSize = 1.3, PlanetCoordinate = new Tuple<double, double>(3.47, 2.66), PlanetBio = "", PlanetExsistance = true},
-            new Planet{PlanetName = "Krypton", PlanetSize = 1.5, PlanetCoordinate = new Tuple<double, double>(23, -14.5), PlanetBio = Krypton(), PlanetExsistance = false },
-            new Planet{PlanetName = "Alderaan", PlanetSize = 1, PlanetCoordinate = new Tuple<double, double>(-18,27),PlanetBio = "", PlanetExsistance = false},
-            new Planet{PlanetName = "Klendathu", PlanetSize = 2.6,PlanetCoordinate = new Tuple<double, double>(-15.6,-17.8), PlanetBio = "", PlanetExsistance = true},
-            new Planet{PlanetName = "Genesis", PlanetSize = 1.7, PlanetCoordinate = new Tuple<double, double>(7.2,-32), PlanetBio = "", PlanetExsistance = true }
+            new Planet{PlanetName = "Earth", PlanetSize = 1, PlanetCoordinate = (0,0), PlanetBio = "", PlanetExsistance = true},
+            new Planet{PlanetName = "Moon", PlanetSize = .27, PlanetCoordinate = (.0002,.00025), PlanetBio = "", PlanetExsistance = true},
+            new Planet{PlanetName = "Proxima b", PlanetSize = 1.3, PlanetCoordinate = (3.47, 2.66), PlanetBio = "", PlanetExsistance = true},
+            new Planet{PlanetName = "Krypton", PlanetSize = 1.5, PlanetCoordinate = (23.00, -14.50), PlanetBio = Krypton(), PlanetExsistance = false },
+            new Planet{PlanetName = "Alderaan", PlanetSize = 1, PlanetCoordinate = (-18.00,27.00),PlanetBio = "", PlanetExsistance = false},
+            new Planet{PlanetName = "Klendathu", PlanetSize = 2.6,PlanetCoordinate = (-15.60,-17.80), PlanetBio = "", PlanetExsistance = true},
+            new Planet{PlanetName = "Genesis", PlanetSize = 1.7, PlanetCoordinate = (7.20,-32.00), PlanetBio = "", PlanetExsistance = true }
 
 
 

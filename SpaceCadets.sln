@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceCadets", "SpaceCadets.csproj", "{A5A7BA4A-DF98-4187-8BCC-F48CF5964E1B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Program", "..\Program\Program.csproj", "{43A6AB21-6D12-4405-9C43-DAA1790734F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A5A7BA4A-DF98-4187-8BCC-F48CF5964E1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5A7BA4A-DF98-4187-8BCC-F48CF5964E1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5A7BA4A-DF98-4187-8BCC-F48CF5964E1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43A6AB21-6D12-4405-9C43-DAA1790734F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43A6AB21-6D12-4405-9C43-DAA1790734F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43A6AB21-6D12-4405-9C43-DAA1790734F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43A6AB21-6D12-4405-9C43-DAA1790734F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
