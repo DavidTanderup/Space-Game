@@ -44,8 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Asteroids.cs" />
+    <Compile Include="Characters.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Formulas.cs" />
+    <Compile Include="GraphicsMove.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="Planets.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpaceShip.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
