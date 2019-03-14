@@ -6,6 +6,18 @@ using System.Threading.Tasks;
 
 namespace SpaceCadets
 {
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+        }
+
+    }
+
+
+
+
     public class ForeignObjectDebris
     {
         public double FODLocation { get; set; }
@@ -21,7 +33,7 @@ namespace SpaceCadets
         public string PlanetBio { get; set; }
         public bool PlanetExsistance { get; set; }
 
-        
+
 
 
 
@@ -37,7 +49,7 @@ namespace SpaceCadets
 
             List<Planet> Galaxy = new List<Planet>()
         {
-                               
+
             new Planet{PlanetName = "Earth", PlanetSize = 1, PlanetCoordinate = (0,0), PlanetBio = "", PlanetExsistance = true},
             new Planet{PlanetName = "Moon", PlanetSize = .27, PlanetCoordinate = (.0002,.00025), PlanetBio = "", PlanetExsistance = true},
             new Planet{PlanetName = "Proxima b", PlanetSize = 1.3, PlanetCoordinate = (3.47, 2.66), PlanetBio = "", PlanetExsistance = true},
@@ -54,8 +66,8 @@ namespace SpaceCadets
 
             return Galaxy;
         }
-        
-        public string  Krypton()
+
+        public string Krypton()
         {
             string kryptonBio =
             "\n\tHistory of Krypton " +
@@ -77,14 +89,14 @@ namespace SpaceCadets
             "started the Destroyer, a device which functioned as a giant nuclear gun, projecting massive streams of nuclear energy into the core of Krypton, intended to " +
             "trigger an explosive chain reaction within Krypton's core almost immediately. The use of the Destroyer eliminated the Post-Crisis city of Kandor, but it was " +
             "believed at the time that the device had been stopped before it could achieve planetary destruction (by Van-L, an ancestor of Jor-El). Centuries later, Jor-El " +
-            "himself would discover that the reaction had only been slowed to a nearly imperceptible rate and it will eventually destroy the planet as intended."+
-            "\n\tPresent Day Krypton" 
+            "himself would discover that the reaction had only been slowed to a nearly imperceptible rate and it will eventually destroy the planet as intended." +
+            "\n\tPresent Day Krypton"
           ;
 
             return kryptonBio;
         }
-        
-        
+
+
 
     }
 
@@ -97,7 +109,7 @@ namespace SpaceCadets
 
     }
 
-   public class Characters
+    public class Characters
     {
         public string CharacterName { get; set; }
         public string CharacterRace { get; set; }
@@ -140,9 +152,9 @@ namespace SpaceCadets
 
 
         }
-       
+
     }
-    
+
 
 }
 namespace Graphics
@@ -195,9 +207,6 @@ namespace Graphics
 
 
         }
-
-
-
         private void MoveHero(int x, int y)
         {
             Coordinate newHero = new Coordinate()
@@ -220,7 +229,6 @@ namespace Graphics
 
 
         }
-
         private void RemoveHero()
         {
             Console.BackgroundColor = BACKGROUND_COLOR;
@@ -228,7 +236,6 @@ namespace Graphics
             Console.Write("             ");
 
         }
-
         private bool CanMove(Coordinate c)
         {
             if (c.X < 0 || c.X >= Console.WindowWidth)
@@ -242,14 +249,11 @@ namespace Graphics
 
             return true;
         }
-
-
         private void SetBackGroundColor()
         {
             Console.BackgroundColor = BACKGROUND_COLOR;
             Console.Clear();
         }
-
         /// <summary>
         /// Initiates game by painting background 
         /// and iniating the hero
@@ -267,9 +271,116 @@ namespace Graphics
 
             MoveHero(0, 0);
         }
+
+
     }
 
+    public class Colors
+    {
+        public int X { get; set; }
+        public int Y { get; set; }
 
+        const ConsoleColor GREEN = ConsoleColor.Green;
+        const ConsoleColor BLUE = ConsoleColor.Blue;
+        const ConsoleColor YELLOW = ConsoleColor.Yellow;
+
+
+        public void Earth()
+        {
+            LandColor();
+            SkyColor();
+            Sun();
+
+        }
+
+        public void LandColor()
+        {
+            int X = 0;
+            int Y = Console.LargestWindowHeight/2;
+            Console.BackgroundColor = GREEN;
+            int r = Console.WindowWidth;
+            int bottom = Console.WindowHeight;
+
+            while (bottom >= Y)
+            {
+                while (r > X)
+                {
+                    Console.SetCursorPosition(X, Y);
+                    Console.BackgroundColor = GREEN;
+                    Console.Write(" ");
+                    X++;
+
+                }
+                X = 0;
+                Y++;
+            }
+
+
+
+
+
+        }
+        public void SkyColor()
+        {
+            int X = 0;
+            int Y = 0;
+
+            Console.BackgroundColor = BLUE;
+            int r = Console.WindowWidth;
+            int bottom = Console.LargestWindowHeight/2;
+
+            while (bottom >= Y)
+            {
+                while (r > X)
+                {
+                    Console.SetCursorPosition(X, Y);
+                    Console.BackgroundColor = BLUE;
+                    Console.Write(" ");
+                    X++;
+
+                }
+                X = 0;
+                Y++;
+            }
+
+
+
+
+
+        }
+        public void Sun()
+        {
+            int X = 10;
+            int Y = 2;
+            int width = X + 20;
+            int height = 10;
+            Console.BackgroundColor = YELLOW;
+            
+
+            while (height > Y)
+            {
+                while (width > X)
+                {
+                    Console.SetCursorPosition(X, Y);
+                    Console.BackgroundColor = YELLOW;
+                    Console.Write(" ");
+                    X++;
+
+                }
+                X = 10;
+                Y++;
+            }
+
+
+
+
+
+        }
+
+
+
+                     
+    }
 
 
 
@@ -280,7 +391,7 @@ namespace UserInterface
 {
     public class Navigation
     {
- 
+
     }
     public class Menu
     {
@@ -289,7 +400,7 @@ namespace UserInterface
         /// </summary>
         public void WelcomeMenu()
         {
-            
+
             Console.WriteLine("\n\n\n\n\n");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\t===================================================================================");
