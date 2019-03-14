@@ -56,7 +56,7 @@ namespace SpaceCadets
             new Planet{PlanetName = "Krypton", PlanetSize = 1.5, PlanetCoordinate = (23.00, -14.50), PlanetBio = Krypton(), PlanetExsistance = false },
             new Planet{PlanetName = "Alderaan", PlanetSize = 1, PlanetCoordinate = (-18.00,27.00),PlanetBio = "", PlanetExsistance = false},
             new Planet{PlanetName = "Klendathu", PlanetSize = 2.6,PlanetCoordinate = (-15.60,-17.80), PlanetBio = "", PlanetExsistance = true},
-            new Planet{PlanetName = "Genesis", PlanetSize = 1.7, PlanetCoordinate = (7.20,-32.00), PlanetBio = "", PlanetExsistance = true }
+            new Planet{PlanetName = "Genesis", PlanetSize = 1.7, PlanetCoordinate = (7.20,-32.00), PlanetBio = "", PlanetExsistance = true}
 
 
 
