@@ -9,22 +9,24 @@ namespace SpaceCadets
 {
     class Characters
     {
-        public string Name;
+        public string name ;
         public int money;
         public double Age;
         string location;
+
         SpaceShip mySpaceShip = new SpaceShip();
         
         //skills
         //distance traveled
 
 
-        public Characters(int money, double Age, string location)
+        public Characters(int money, double Age, string location, string name)
         {           
             this.money = money;
             this.Age = Age;
             this.location = location;
-           `
+            this.name = name;
+           
         }
 
     }

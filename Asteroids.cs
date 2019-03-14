@@ -19,13 +19,6 @@ namespace ConsoleApp4
     {
         Random ran = new Random();
 
-        //string name = "Asteroid";
-        //int speed = 0;
-        //string shape = "*";
-        //Coordinate ast = new Coordinate();
-
-
-
 
         public Coordinate spawnAsteroid(int width, int height)  //necessary?
         {

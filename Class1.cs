@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Graphics;
+using System.Threading;
 
 namespace SpaceCadets
 {
@@ -10,6 +12,14 @@ namespace SpaceCadets
     {
         static void Main(string[] args)
         {
+            Thread.Sleep(2000);
+            Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
+            Colors colors = new Colors();
+
+            colors.Earth();
+
+
+            Console.ReadLine();
 
         }
 
@@ -109,7 +119,7 @@ namespace SpaceCadets
 
     }
 
-    public class Characters
+    public class Character
     {
         public string CharacterName { get; set; }
         public string CharacterRace { get; set; }
@@ -157,6 +167,7 @@ namespace SpaceCadets
 
 
 }
+
 namespace Graphics
 {
     /// <summary>
@@ -377,7 +388,7 @@ namespace Graphics
 
         }
 
-
+        
 
                      
     }
@@ -386,7 +397,6 @@ namespace Graphics
 
 
 }
-
 namespace UserInterface
 {
     public class Navigation

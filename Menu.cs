@@ -9,12 +9,12 @@ namespace SpaceCadets
     class Menus
     {
 
-        Console.ReadKey
-        switch(action) //Travel, Trade, Fuel, Mine
-            {
+        //Console.ReadKey
+        //switch(action) //Travel, Trade, Fuel, Mine
+        //    {
 
 
-            }
+        //    }
 
         
     }
