@@ -42,10 +42,6 @@ namespace ConsoleApp4
         {
             Asteroids ast = new Asteroids();
             InitGame(someShip.rep);
-            Coordinate Asteroid = new Coordinate();
-            Asteroid.X = 30;
-            Asteroid.Y = 20;
-
             int width = Console.WindowWidth-1;
             int height = Console.WindowHeight;
             List<Coordinate> AsteroidList = new List<Coordinate> { };
@@ -53,15 +49,9 @@ namespace ConsoleApp4
             {
                 AsteroidList.Insert(AsteroidList.Count, ast.spawnAsteroid(width, height));
                 ast.AsteroidMover(AsteroidList);
-
-
             }
 
-
-
             bool alive = true;
-            //bool KeyPress = false;
-            //Timer time = new Timer(250);
             ConsoleKeyInfo keyInfo;
             int CycleCounter = 0;
 
@@ -75,9 +65,7 @@ namespace ConsoleApp4
                 }   
                 System.Threading.Thread.Sleep(5);
                 CycleCounter++;
-                //ast.AsteroidMover(AsteroidList);
-                //AsteroidList.Insert(AsteroidList.Count, ast.spawnAsteroid());
-                //KeyPress = false;
+
                 if (Console.KeyAvailable)
                 {
                     keyInfo = Console.ReadKey(true);
@@ -85,22 +73,18 @@ namespace ConsoleApp4
                     {
                         case ConsoleKey.UpArrow:
                             MoveHero(0, -1, someShip.rep);
-                            //KeyPress = true;
                             break;
 
                         case ConsoleKey.RightArrow:
                             MoveHero(1, 0, someShip.rep);
-                            //KeyPress = true;
                             break;
 
                         case ConsoleKey.DownArrow:
                             MoveHero(0, 1, someShip.rep);
-                            //KeyPress = true;
                             break;
 
                         case ConsoleKey.LeftArrow:
                             MoveHero(-1, 0, someShip.rep);
-                            //KeyPress = true;
                             break;
 
                         case ConsoleKey.Spacebar:
@@ -110,19 +94,14 @@ namespace ConsoleApp4
                     }
                 }
 
-                //else
-                //{
-                //}
             foreach (Coordinate asteroidCoor in AsteroidList)
             {
                 if ((asteroidCoor.X >= Hero.X && asteroidCoor.X <= Hero.X + someShip.rep.Length) && asteroidCoor.Y == Hero.Y)
-                //if(Asteroid==Hero)
                 {
                     alive = false;
                 }
             }
             }
-            // }
         }
 
 
@@ -144,8 +123,6 @@ namespace ConsoleApp4
                 Console.SetCursorPosition(newHero.X, newHero.Y);
                 Console.Write(spaceship);
                 Console.WriteLine();
-
-
 
                 Hero = newHero;
             }
