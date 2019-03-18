@@ -5,11 +5,7 @@ VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceCadets", "SpaceCadets.csproj", "{A5A7BA4A-DF98-4187-8BCC-F48CF5964E1B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6E93F473-30CF-4611-9CC6-BBF57034FD52}"
-	ProjectSection(SolutionItems) = preProject
-		MarketPlace.cs = MarketPlace.cs
-		ProgramMap.cs = ProgramMap.cs
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Class Library", "..\ClassLibrary1\Class Library.csproj", "{D193A0E1-BAD9-45F6-8B60-1A90CEDA100A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +17,10 @@ Global
 		{A5A7BA4A-DF98-4187-8BCC-F48CF5964E1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5A7BA4A-DF98-4187-8BCC-F48CF5964E1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5A7BA4A-DF98-4187-8BCC-F48CF5964E1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D193A0E1-BAD9-45F6-8B60-1A90CEDA100A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D193A0E1-BAD9-45F6-8B60-1A90CEDA100A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D193A0E1-BAD9-45F6-8B60-1A90CEDA100A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D193A0E1-BAD9-45F6-8B60-1A90CEDA100A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

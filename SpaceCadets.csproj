@@ -46,14 +46,20 @@
   <ItemGroup>
     <Compile Include="Asteroids.cs" />
     <Compile Include="Characters.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Formulas.cs" />
     <Compile Include="GraphicsMove.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Planets.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProgramMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpaceShip.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\Class Library.csproj">
+      <Project>{d193a0e1-bad9-45f6-8b60-1a90ceda100a}</Project>
+      <Name>Class Library</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
