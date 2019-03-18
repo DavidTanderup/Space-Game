@@ -12,27 +12,9 @@ namespace SpaceCadets
         //ConsoleKeyInfo action;
         public void MainMenu()
         {
+            Console.WriteLine("T- Travel, S-Trade, M-Mine");
             while (true)
             {
-                //switch (action.Key) //Travel, Trade, Fuel, Mine
-                //{
-                //    case ConsoleKey.UpArrow:
-                //        Console.WriteLine("up");
-                //        System.Threading.Thread.Sleep(1000);
-                //        break;
-
-                //    case ConsoleKey.DownArrow:
-                //        Console.WriteLine("down");
-                //        break;
-
-                //    case ConsoleKey.RightArrow:
-                //        Console.WriteLine("right");
-                //        break;
-
-                //}
-
-
-
                 ConsoleKeyInfo keyInfo;
                 if (Console.KeyAvailable)
                 {
@@ -45,11 +27,11 @@ namespace SpaceCadets
                             break;
 
                         case ConsoleKey.S:
-                            Console.WriteLine("trade");                           
+                            Console.WriteLine("trade");
                             break;
 
                         case ConsoleKey.M:
-                            Console.WriteLine("mine");                          
+                            Console.WriteLine("mine");
                             break;
                     }
                 }
@@ -73,14 +55,32 @@ namespace SpaceCadets
             {
                 Console.WriteLine();
                 success = int.TryParse(Console.ReadLine(), out int input);
-            }    
+                try
+                {
+                    Console.WriteLine($"Would you like to go to {galaxy[input].PlanetName}?");
 
-               
+                }
+
+                catch (Exception)
+                {
+                    Console.WriteLine("Please enter a planet from the list!");
+                }
+
+            }
+        }
+
+
+
+
+        public void TravelPlanetPrompt(Planet toPlanet, Planet fromPlanet)
+        {
+            
+
+
+
+
 
 
         }
-
-            
-        
     }
 }
