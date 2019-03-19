@@ -20,22 +20,9 @@ namespace ConsoleApp4
         static void Main(string[] args)
         {
             MarketPlace marketPlace = new MarketPlace();
-            SaveAndLoadGame saveAndLoadGame = new SaveAndLoadGame();
 
-            List<Tuple<string, bool>> tuples = new List<Tuple<string, bool>>() { };
-            string fileLocation = saveAndLoadGame.FileLocation();
-            saveAndLoadGame.CreateNewSaveFile(fileLocation);
-            //marketPlace.Greeting();
-            //marketPlace.ChoiceMenu();
-     
-
-
-
-
-
-            //    Console.Clear();
-        //    Console.WriteLine("BOOM!");
-        //    System.Threading.Thread.Sleep(5000);
+            marketPlace.MarketPlaceMethod();
+  
         }
 
     }
