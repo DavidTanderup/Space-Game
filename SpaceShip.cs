@@ -71,6 +71,7 @@ namespace Ships
         this.rep = rep;
         this.speed = speed;
         this.weight = weight;
+
         }
     }
 

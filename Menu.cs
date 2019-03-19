@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleApp4;
 
 namespace SpaceCadets
 {
     class Menus
     {
 
+
         //ConsoleKeyInfo action;
-        public void MainMenu()
+        public void MainMenu(Characters self)
         {
             Console.WriteLine("T- Travel, S-Trade, M-Mine");
             while (true)
@@ -23,7 +25,7 @@ namespace SpaceCadets
                     {
                         case ConsoleKey.T:
                             Console.WriteLine("travel");
-                            TravelMenu();
+                            TravelMenu(self);
                             break;
 
                         case ConsoleKey.S:
@@ -39,8 +41,9 @@ namespace SpaceCadets
 
         }
 
-        private static void TravelMenu()
+        private static void TravelMenu(Characters self)
         {
+            Formulas form = new Formulas();
             Planet planets = new Planet();
             var galaxy = planets.PlanetSystem();
             Console.WriteLine("Where would you like to travel?");
@@ -57,25 +60,61 @@ namespace SpaceCadets
                 success = int.TryParse(Console.ReadLine(), out int input);
                 try
                 {
-                    Console.WriteLine($"Would you like to go to {galaxy[input].PlanetName}?");
-
+                    Console.WriteLine($"Would you like to go to {galaxy[input].PlanetName}?");                   
                 }
 
                 catch (Exception)
                 {
                     Console.WriteLine("Please enter a planet from the list!");
+                    TravelMenu(self);
                 }
+                Planet targetPLanet = galaxy[input];
+                bool correct = false;
+                while (!correct)
+                {
+                    char option = char.Parse(Console.ReadLine());
+                    //switch (option)
+                    //{
+                    //    case 'y':
+                    //        TravelPlanetPrompt(self, targetPLanet);
+                    //        break;
 
+
+                    //    case 'n':
+
+
+                    //}
+
+
+
+
+
+
+                }
             }
         }
 
 
 
 
-        public void TravelPlanetPrompt(Planet toPlanet, Planet fromPlanet)
+        public void TravelPlanetPrompt(Characters self, Planet toPlanet)
         {
-            
+            Formulas form = new Formulas();
+            double distanceToPlanet = form.Dist2Points(self.location.PlanetCoordinate, toPlanet.PlanetCoordinate);
+            Console.WriteLine($"Your max speed is {form.WarpSpeed(self.mySpaceShip.speed)}");
+            Console.WriteLine($"Please enter a speed between zero and {self.mySpaceShip.speed}");
+            bool isValidSpeed = double.TryParse(Console.ReadLine(), out double selectedSpeed);
 
+            if(isValidSpeed && selectedSpeed>0 && selectedSpeed <= self.mySpaceShip.speed)
+            {
+
+                Console.WriteLine($"Your trip will take approximately {form.TravelTime(selectedSpeed, distanceToPlanet)} years");
+            }
+
+            else
+            {
+                TravelPlanetPrompt(self, toPlanet);
+            }
 
 
 
