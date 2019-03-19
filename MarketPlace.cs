@@ -84,55 +84,58 @@ namespace SpaceCadets
             Random random = new Random();
 
             double marsBarsPrice = random.Next(100, 500);
-            int marBarsQty = random.Next();
+            int marBarsQty = random.Next(100,500);
+
             double moonPiePrice = random.Next(500, 1000);
-            double bugSprayPrice = random.Next();
-            double widgetsPrice = random.Next();
-            double kryptonite = random.Next();
-            double honeyPrice = random.Next();
-            double zombieRepellentPrice = random.Next();
+            int moonPieQty = random.Next(1,1000);
+
+            double bugSprayPrice = random.Next(25,100);
+            int bugSprayQty = random.Next(1,1500);
+
+            double widgetsPrice = random.Next(300,1600);
+            int widgetsQty = random.Next(500,850);
+
+            double kryptonitePrice = random.Next(5000,18000);
+            int kryptoniteQty = random.Next(6,87);
+
+            double honeyPrice = random.Next(1,60);
+            int honeyQty = random.Next(1000,100000);
+
+            double zombieRepellentPrice = random.Next(1000,22000);
+            int zombieRepellentQty = random.Next(1,100);
 
             List<Tuple<string, int, double>> ThingsForSale = new List<Tuple<string,int,double>>() { new Tuple<string,int,double>("Mars Bars",marBarsQty ,marsBarsPrice),
-                                                                                            new Tuple<string,int,double>("Moon Pies", ,moonPiePrice),
-                                                                                            new Tuple<string,int,double>("Bug Spray", ,bugSprayPrice),
-                                                                                            new Tuple<string,int,double>("Widgets", ,widgetsPrice),
-                                                                                            new Tuple<string,int,double>("Kryptonite", ,kryptonite),
-                                                                                            new Tuple<string,int,double>("Honey [sourced by local Promixa Bees]",,honeyPrice),
-                                                                                            new Tuple<string,int,double>("Zombie Repellent", ,zombieRepellentPrice)};
+                                                                                            new Tuple<string,int,double>("Moon Pies",moonPieQty ,moonPiePrice),
+                                                                                            new Tuple<string,int,double>("Bug Spray",bugSprayQty ,bugSprayPrice),
+                                                                                            new Tuple<string,int,double>("Widgets",widgetsQty ,widgetsPrice),
+                                                                                            new Tuple<string,int,double>("Kryptonite",kryptoniteQty ,kryptonitePrice),
+                                                                                            new Tuple<string,int,double>("Honey [sourced by local Promixa Bees]",honeyQty,honeyPrice),
+                                                                                            new Tuple<string,int,double>("Zombie Repellent",zombieRepellentQty ,zombieRepellentPrice)};
 
-
-
-
+                       
             int firstItem = random.Next(0, 6);
-            int firstQuanity = random.Next(1, 500);
 
             int secondItem = random.Next(0, 6);
-            int secondQuanity = random.Next(1, 500);
 
             int thirdItem = random.Next(0, 6);
-            int thirdQuantity = random.Next(1, 500);
 
             int fourthItem = random.Next(0, 6);
-            int fourthQuantity = random.Next(1, 500);
-
 
 
             Console.WriteLine("Here are the things I have for sale.\n\n");
-            Console.WriteLine($"Item: {ThingsForSale[firstItem].Item1} // Quantity: {firstQuanity}");
-            Console.WriteLine($"{ThingsForSale[secondItem].Item1} Quantity: {secondQuanity}");
-            Console.WriteLine($"{ThingsForSale[thirdItem].Item1} Quantity: {thirdQuantity}");
-            Console.WriteLine($"{ThingsForSale[fourthItem].Item1} Quantity: {fourthQuantity}");
 
 
+                                                                           
+        }
 
+        private 
 
-
-
-
-
-
-
-
+        private void Inventory(List<Tuple<string,int,double>> ThingsForSale , int firstItem, int secondItem, int thirdItem, int fourthItem)
+        {
+            Console.WriteLine($"1) Item: {ThingsForSale[firstItem].Item1} || Quantity: {ThingsForSale[firstItem].Item2:C}  ||  Price: {ThingsForSale[firstItem].Item3:n}");
+            Console.WriteLine($"2) Item: {ThingsForSale[secondItem].Item1} || Quantity: {ThingsForSale[secondItem].Item2:C}  ||  Price: {ThingsForSale[secondItem].Item3:n}");
+            Console.WriteLine($"3) Item: {ThingsForSale[thirdItem].Item1} || Quantity: {ThingsForSale[thirdItem].Item2:C}  ||  Price: {ThingsForSale[thirdItem].Item3:n}");
+            Console.WriteLine($"4) Item: {ThingsForSale[fourthItem].Item1} || Quantity: {ThingsForSale[fourthItem].Item2:C}  ||  Price: {ThingsForSale[fourthItem].Item3:n}");
 
 
         }
