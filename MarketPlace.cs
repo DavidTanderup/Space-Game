@@ -27,7 +27,7 @@ namespace SpaceCadets
                               "\n\t4) Leave -- although technically you aren't doing that HERE, ");
             Console.WriteLine("\t            it's more of a transitory process that begins here,");
             Console.WriteLine("\t            but if you do choose that option know that we are excited");
-            Console.WriteLine("\t            excited to be the start of that new journey in your life.");                  
+            Console.WriteLine("\t            excited to be the start of that new journey in your life.");
             Thread.Sleep(5000);
             Console.Clear();
             Greeting();
@@ -38,8 +38,11 @@ namespace SpaceCadets
                   "\n\t3) Leave [Escape Key]");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.Write("\nOh mighty Space Trader please honor us with your selection: ");
+            MarketChoices();
+        }
 
-
+        private void MarketChoices()
+        {
             ConsoleKeyInfo userInput = Console.ReadKey();
             /// TODO: Add methods to 
             switch (userInput.Key)
@@ -73,12 +76,15 @@ namespace SpaceCadets
 
             }
         }
-        
+
         public void BuyMenu()
         {
+            /// TODO: Create seperate Method for buy generator
+            /// TODO: Create the INT qty generator
             Random random = new Random();
 
             double marsBarsPrice = random.Next(100, 500);
+            int marBarsQty = random.Next();
             double moonPiePrice = random.Next(500, 1000);
             double bugSprayPrice = random.Next();
             double widgetsPrice = random.Next();
@@ -86,21 +92,21 @@ namespace SpaceCadets
             double honeyPrice = random.Next();
             double zombieRepellentPrice = random.Next();
 
-            List<Tuple<string, double>> ThingsForSale = new List<Tuple<string, double>>() { new Tuple<string, double>("Mars Bars", marsBarsPrice),
-                                                                                            new Tuple<string, double>("Moon Pies", moonPiePrice),
-                                                                                            new Tuple<string, double>("Bug Spray", bugSprayPrice),
-                                                                                            new Tuple<string, double>("Widgets", widgetsPrice),
-                                                                                            new Tuple<string, double>("Kryptonite", kryptonite),
-                                                                                            new Tuple<string, double>("Honey [sourced by local Promixa Bees]",honeyPrice),
-                                                                                            new Tuple<string, double>("Zombie Repellent", zombieRepellentPrice)};
+            List<Tuple<string, int, double>> ThingsForSale = new List<Tuple<string,int,double>>() { new Tuple<string,int,double>("Mars Bars",marBarsQty ,marsBarsPrice),
+                                                                                            new Tuple<string,int,double>("Moon Pies", ,moonPiePrice),
+                                                                                            new Tuple<string,int,double>("Bug Spray", ,bugSprayPrice),
+                                                                                            new Tuple<string,int,double>("Widgets", ,widgetsPrice),
+                                                                                            new Tuple<string,int,double>("Kryptonite", ,kryptonite),
+                                                                                            new Tuple<string,int,double>("Honey [sourced by local Promixa Bees]",,honeyPrice),
+                                                                                            new Tuple<string,int,double>("Zombie Repellent", ,zombieRepellentPrice)};
 
 
 
 
-            int firstItem = random.Next(0,6);
+            int firstItem = random.Next(0, 6);
             int firstQuanity = random.Next(1, 500);
 
-            int secondItem = random.Next(0,6);
+            int secondItem = random.Next(0, 6);
             int secondQuanity = random.Next(1, 500);
 
             int thirdItem = random.Next(0, 6);
@@ -108,9 +114,6 @@ namespace SpaceCadets
 
             int fourthItem = random.Next(0, 6);
             int fourthQuantity = random.Next(1, 500);
-
-            List<Tuple<string, int, double>> currentInventoryAndPrices = new List<Tuple<string, int, double>>();
-            
 
 
 
@@ -121,10 +124,42 @@ namespace SpaceCadets
             Console.WriteLine($"{ThingsForSale[fourthItem].Item1} Quantity: {fourthQuantity}");
 
 
+
+
+
+
+
+
+
+
+
+
+
         }
 
         public void SellMenu()
         {
+
+        }
+        public void InTheMarket()
+        {
+            /// place the buy sell generators outside of the while loop. create an instance of the list
+            /// inside the loop. Theory is that the list will not change until the player quits. The list however can be updated to reflect purchases
+            bool inTheMarket = true;
+            while (inTheMarket)
+            {
+
+                ChoiceMenu();
+                /// Buy Menu Method
+
+                /// Sell Menu Method
+
+
+
+
+
+            }
+
 
         }
 

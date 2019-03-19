@@ -22,6 +22,9 @@ namespace ConsoleApp4
             MarketPlace marketPlace = new MarketPlace();
             SaveAndLoadGame saveAndLoadGame = new SaveAndLoadGame();
 
+            List<Tuple<string, bool>> tuples = new List<Tuple<string, bool>>() { };
+            string fileLocation = saveAndLoadGame.FileLocation();
+            saveAndLoadGame.CreateNewSaveFile(fileLocation);
             //marketPlace.Greeting();
             //marketPlace.ChoiceMenu();
      
