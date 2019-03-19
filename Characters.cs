@@ -12,21 +12,26 @@ namespace SpaceCadets
         public string name ;
         public int money;
         public double Age;
-        string location;
-
-        SpaceShip mySpaceShip = new SpaceShip();
+        public Planet location;
+        public SpaceShip mySpaceShip = new SpaceShip();
+        public bool Alive;
         
         //skills
         //distance traveled
 
 
-        public Characters(int money, double Age, string location, string name)
+        public Characters(int money, double Age, Planet location, string name, SpaceShip mySpaceShip, bool Alive)
         {           
             this.money = money;
             this.Age = Age;
             this.location = location;
             this.name = name;
-           
+            this.mySpaceShip = mySpaceShip;
+            this.Alive = Alive;
+
+
+
+
         }
 
     }
