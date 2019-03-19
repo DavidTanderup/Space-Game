@@ -9,19 +9,16 @@ namespace SpaceCadets
 {
     class MarketPlace
     {
-        private void Greeting()
+        public void Greeting()
         {
-            string i = "Welcome to the Market";
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(i); /// TODO: add something with more imagination later
+            Console.WriteLine("\t\tWelcome to the Market"); /// TODO: add something with more imagination later
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("=====================================================");
             Console.WriteLine("=====================================================\n\n");
         }
-
-        private void FirstMenu()
+        public void ChoiceMenu()
         {
-            Greeting();
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\tYou can do one of four things:\n" +
                               "\n\t1) Buy Something" +
@@ -33,11 +30,6 @@ namespace SpaceCadets
             Console.WriteLine("\t            excited to be the start of that new journey in your life.");
             Thread.Sleep(5000);
             Console.Clear();
-        }
-
-        private void SecondMenu()
-        {
-            
             Greeting();
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\tYou can do one of three things:\n" +
@@ -46,182 +38,133 @@ namespace SpaceCadets
                   "\n\t3) Leave [Escape Key]");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.Write("\nOh mighty Space Trader please honor us with your selection: ");
-
-
+            MarketChoices();
         }
 
-        private (int, int, int, int, List<Tuple<string, int, double>>) InventoryGeneratorBuy()
+        private void MarketChoices()
         {
-            Random random = new Random();
+            ConsoleKeyInfo userInput = Console.ReadKey();
+            /// TODO: Add methods to 
+            switch (userInput.Key)
+            {
+                case ConsoleKey.NumPad1:
+                    Console.Clear();
+                    BuyMenu();
+                    break;
 
-            double marsBarsPrice1 = random.Next(100, 500);
-            double moonPiePrice1 = random.Next(500, 1000);
-            double bugSprayPrice1 = random.Next(25, 100);
-            double widgetsPrice1 = random.Next(300, 1600);
-            double kryptonitePrice1 = random.Next(5000, 18000);
-            double honeyPrice1 = random.Next(1, 60);
-            double zombieRepellentPrice1 = random.Next(1000, 22000);
-            double sunScreenPrice1 = random.Next(15, 365);
+                case ConsoleKey.D1:
+                    Console.Clear();
+                    BuyMenu();
+                    break;
 
-            int marBarsQty1 = random.Next(100, 500);
-            int moonPieQty1 = random.Next(1, 1000);
-            int bugSprayQty1 = random.Next(1, 1500);
-            int widgetsQty1 = random.Next(500, 850);
-            int kryptoniteQty1 = random.Next(6, 87);
-            int honeyQty1 = random.Next(1000, 100000);
-            int zombieRepellentQty1 = random.Next(1, 100);
-            int sunScreenQty1 = random.Next(15, 8200);
+                case ConsoleKey.D2:
+                    Console.Clear();
+                    Console.WriteLine("Sell Things");
+                    break;
 
-            List<Tuple<string, int, double>> ThingsToBuy = new List<Tuple<string, int, double>>() { new Tuple<string,int,double>("Mars Bars",marBarsQty1 ,marsBarsPrice1),
-                                                                                            new Tuple<string,int,double>("Moon Pies",moonPieQty1 ,moonPiePrice1),
-                                                                                            new Tuple<string,int,double>("Bug Spray",bugSprayQty1 ,bugSprayPrice1),
-                                                                                            new Tuple<string,int,double>("Widgets",widgetsQty1 ,widgetsPrice1),
-                                                                                            new Tuple<string,int,double>("Kryptonite",kryptoniteQty1 ,kryptonitePrice1),
-                                                                                            new Tuple<string,int,double>("Honey [sourced by local Promixa Bees]",honeyQty1,honeyPrice1),
-                                                                                            new Tuple<string,int,double>("Zombie Repellent",zombieRepellentQty1 ,zombieRepellentPrice1),
-                                                                                            new Tuple<string,int,double>("Sun Screen",sunScreenQty1,sunScreenPrice1)};
+                case ConsoleKey.NumPad2:
+                    Console.Clear();
+                    Console.WriteLine("Sell Things");
+                    break;
 
+                case ConsoleKey.Escape:
+                    Console.Clear();
+                    Console.WriteLine("Exit");
 
-            int firstItem = random.Next(0, 1);
-            int secondItem = random.Next(2, 3);
-            int thirdItem = random.Next(4, 5);
-            int fourthItem = random.Next(6, 7);
+                    break;
 
 
-
-            return (firstItem, secondItem, thirdItem, fourthItem, ThingsToBuy);
+            }
         }
 
-        private (int, int, int, int, List<Tuple<string, int, double>>) InventoryGeneratorSell()
+        public void BuyMenu()
         {
+            /// TODO: Create seperate Method for buy generator
+            /// TODO: Create the INT qty generator
             Random random = new Random();
 
             double marsBarsPrice = random.Next(100, 500);
+            int marBarsQty = random.Next(100,500);
+
             double moonPiePrice = random.Next(500, 1000);
-            double bugSprayPrice = random.Next(25, 100);
-            double widgetsPrice = random.Next(300, 1600);
-            double kryptonitePrice = random.Next(5000, 18000);
-            double honeyPrice = random.Next(1, 60);
-            double zombieRepellentPrice = random.Next(1000, 22000);
-            double sunScreenPrice = random.Next(15,365);
+            int moonPieQty = random.Next(1,1000);
 
-            int marBarsQty = random.Next(100, 500);
-            int moonPieQty = random.Next(1, 1000);
-            int bugSprayQty = random.Next(1, 1500);
-            int widgetsQty = random.Next(500, 850);
-            int kryptoniteQty = random.Next(6, 87);
-            int honeyQty = random.Next(1000, 100000);
-            int zombieRepellentQty = random.Next(1, 100);
-            int sunScreenQty = random.Next(15, 8200);
+            double bugSprayPrice = random.Next(25,100);
+            int bugSprayQty = random.Next(1,1500);
 
-            List<Tuple<string, int, double>> ThingsForSale = new List<Tuple<string, int, double>>() { new Tuple<string,int,double>("Mars Bars",marBarsQty ,marsBarsPrice),
-                                                                                                      new Tuple<string,int,double>("Moon Pies",moonPieQty ,moonPiePrice),
-                                                                                                      new Tuple<string,int,double>("Bug Spray",bugSprayQty ,bugSprayPrice),
-                                                                                                      new Tuple<string,int,double>("Widgets",widgetsQty ,widgetsPrice),
-                                                                                                      new Tuple<string,int,double>("Kryptonite",kryptoniteQty ,kryptonitePrice),
-                                                                                                      new Tuple<string,int,double>("Honey [sourced by local Promixa Bees]",honeyQty,honeyPrice),
-                                                                                                      new Tuple<string,int,double>("Zombie Repellent",zombieRepellentQty ,zombieRepellentPrice),
-                                                                                                      new Tuple<string, int, double>("Sun Screen",sunScreenQty,sunScreenPrice)};
-                                 
-            int firstItem = random.Next(0, 1);
-            int secondItem = random.Next(2, 3);
-            int thirdItem = random.Next(4, 5);
-            int fourthItem = random.Next(6, 7);
+            double widgetsPrice = random.Next(300,1600);
+            int widgetsQty = random.Next(500,850);
 
-            return (firstItem, secondItem, thirdItem, fourthItem, ThingsForSale);
-        }
+            double kryptonitePrice = random.Next(5000,18000);
+            int kryptoniteQty = random.Next(6,87);
 
-        private void Inventory(int firstItem, int secondItem, int thirdItem, int fourthItem, List<Tuple<string, int, double>> ThingsForSale)
-        {
-            Console.WriteLine($"1) Item: {ThingsForSale[firstItem].Item1} || Quantity: {ThingsForSale[firstItem].Item2:n}  ||  Price: {ThingsForSale[firstItem].Item3:C}");
-            Console.WriteLine($"2) Item: {ThingsForSale[secondItem].Item1} || Quantity: {ThingsForSale[secondItem].Item2:n}  ||  Price: {ThingsForSale[secondItem].Item3:C}");
-            Console.WriteLine($"3) Item: {ThingsForSale[thirdItem].Item1} || Quantity: {ThingsForSale[thirdItem].Item2:n}  ||  Price: {ThingsForSale[thirdItem].Item3:C}");
-            Console.WriteLine($"4) Item: {ThingsForSale[fourthItem].Item1} || Quantity: {ThingsForSale[fourthItem].Item2:n}  ||  Price: {ThingsForSale[fourthItem].Item3:C}");
+            double honeyPrice = random.Next(1,60);
+            int honeyQty = random.Next(1000,100000);
 
+            double zombieRepellentPrice = random.Next(1000,22000);
+            int zombieRepellentQty = random.Next(1,100);
 
-        }
+            List<Tuple<string, int, double>> ThingsForSale = new List<Tuple<string,int,double>>() { new Tuple<string,int,double>("Mars Bars",marBarsQty ,marsBarsPrice),
+                                                                                            new Tuple<string,int,double>("Moon Pies",moonPieQty ,moonPiePrice),
+                                                                                            new Tuple<string,int,double>("Bug Spray",bugSprayQty ,bugSprayPrice),
+                                                                                            new Tuple<string,int,double>("Widgets",widgetsQty ,widgetsPrice),
+                                                                                            new Tuple<string,int,double>("Kryptonite",kryptoniteQty ,kryptonitePrice),
+                                                                                            new Tuple<string,int,double>("Honey [sourced by local Promixa Bees]",honeyQty,honeyPrice),
+                                                                                            new Tuple<string,int,double>("Zombie Repellent",zombieRepellentQty ,zombieRepellentPrice)};
 
-        private bool BuyMenu((int, int, int, int, List<Tuple<string, int, double>>) inventory)
-        {
-            Console.Clear();
+                       
+            int firstItem = random.Next(0, 6);
+
+            int secondItem = random.Next(0, 6);
+
+            int thirdItem = random.Next(0, 6);
+
+            int fourthItem = random.Next(0, 6);
+
 
             Console.WriteLine("Here are the things I have for sale.\n\n");
 
-            Inventory(inventory.Item1, inventory.Item2, inventory.Item3, inventory.Item4, inventory.Item5);
 
-            return true;
+                                                                           
         }
 
-        private bool SellMenu((int, int, int, int, List<Tuple<string, int, double>>) inventory)
+         
+
+        private void Inventory(List<Tuple<string,int,double>> ThingsForSale , int firstItem, int secondItem, int thirdItem, int fourthItem)
         {
-            Console.Clear();
+            Console.WriteLine($"1) Item: {ThingsForSale[firstItem].Item1} || Quantity: {ThingsForSale[firstItem].Item2:C}  ||  Price: {ThingsForSale[firstItem].Item3:n}");
+            Console.WriteLine($"2) Item: {ThingsForSale[secondItem].Item1} || Quantity: {ThingsForSale[secondItem].Item2:C}  ||  Price: {ThingsForSale[secondItem].Item3:n}");
+            Console.WriteLine($"3) Item: {ThingsForSale[thirdItem].Item1} || Quantity: {ThingsForSale[thirdItem].Item2:C}  ||  Price: {ThingsForSale[thirdItem].Item3:n}");
+            Console.WriteLine($"4) Item: {ThingsForSale[fourthItem].Item1} || Quantity: {ThingsForSale[fourthItem].Item2:C}  ||  Price: {ThingsForSale[fourthItem].Item3:n}");
 
-            Console.WriteLine("Here are the things I am willing to buy.\n\n");
 
-            Inventory(inventory.Item1, inventory.Item2, inventory.Item3, inventory.Item4, inventory.Item5);
-
-            return true;
         }
 
-        private void InTheMarket((int, int, int, int, List<Tuple<string, int, double>>)Buy, (int, int, int, int, List<Tuple<string, int, double>>)Sell)
+        public void SellMenu()
         {
+
+        }
+        public void InTheMarket()
+        {
+            /// place the buy sell generators outside of the while loop. create an instance of the list
+            /// inside the loop. Theory is that the list will not change until the player quits. The list however can be updated to reflect purchases
             bool inTheMarket = true;
- 
-            FirstMenu();
-            SecondMenu();
             while (inTheMarket)
             {
-                ConsoleKeyInfo userInput = Console.ReadKey();
-                Console.Clear();
-                SecondMenu();
-                switch (userInput.Key)
-                {
-                    case ConsoleKey.NumPad1:
-                        Console.Clear();
-                        BuyMenu(Buy);
-                        break;
 
-                    case ConsoleKey.D1:
-                        Console.Clear();
-                        BuyMenu(Buy);
-                        break;
+                ChoiceMenu();
+                /// Buy Menu Method
 
-                    case ConsoleKey.D2:
-                        Console.Clear();
-                        SellMenu(Sell);
-                        break;
+                /// Sell Menu Method
 
-                    case ConsoleKey.NumPad2:
-                        Console.Clear();
-                        SellMenu(Sell);
-                        break;
 
-                    case ConsoleKey.Escape:
-                        Console.Clear();
-                        inTheMarket = false;
-                        break;
-                }
+
+
 
             }
 
 
         }
-
-
-        /// <summary>
-        /// Buy and sell list return the same value
-        /// Create the selection menu
-        /// </summary>
-        public void MarketPlaceMethod()
-        {
-
-            (int, int, int, int, List<Tuple<string, int, double>>) Buy = InventoryGeneratorBuy();
-            (int, int, int, int, List<Tuple<string, int, double>>) Sell = InventoryGeneratorSell();
-
-            InTheMarket(Buy, Sell);
-        }
-
-
 
     }
 }

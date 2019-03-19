@@ -9,9 +9,6 @@ namespace SpaceCadets
 {
     class Menus
     {
-
-
-        //ConsoleKeyInfo action;
         public void MainMenu(Characters self)
         {
             Console.WriteLine("T- Travel, S-Trade, M-Mine");
@@ -49,7 +46,6 @@ namespace SpaceCadets
             Console.WriteLine("Where would you like to travel?");
             for (int i = 0; i < galaxy.Count; i++)
             {
-                //int input;
                 Console.WriteLine($"{i}. {galaxy[i].PlanetName}");
             }
 
@@ -58,40 +54,21 @@ namespace SpaceCadets
             {
                 Console.WriteLine();
                 success = int.TryParse(Console.ReadLine(), out int input);
-                try
+
+                if (success == true && input >= 0 && input < galaxy.Count)
                 {
-                    Console.WriteLine($"Would you like to go to {galaxy[input].PlanetName}?");                   
+                    Menus menu = new Menus();
+                    Planet targetPlanet = galaxy[input];
+                    success = true;
+                    menu.TravelPlanetPrompt(self, targetPlanet);
                 }
 
-                catch (Exception)
+                else
                 {
-                    Console.WriteLine("Please enter a planet from the list!");
+                    Console.Clear();
                     TravelMenu(self);
                 }
-                Planet targetPLanet = galaxy[input];
-                bool correct = false;
-                while (!correct)
-                {
-                    char option = char.Parse(Console.ReadLine());
-                    //switch (option)
-                    //{
-                    //    case 'y':
-                    //        TravelPlanetPrompt(self, targetPLanet);
-                    //        break;
-
-
-                    //    case 'n':
-
-
-                    //}
-
-
-
-
-
-
-                }
-            }
+            }                            
         }
 
 
@@ -108,13 +85,34 @@ namespace SpaceCadets
             if(isValidSpeed && selectedSpeed>0 && selectedSpeed <= self.mySpaceShip.speed)
             {
 
-                Console.WriteLine($"Your trip will take approximately {form.TravelTime(selectedSpeed, distanceToPlanet)} years");
+                Console.WriteLine($"Your trip to {toPlanet.PlanetName} will take approximately {form.TravelTime(selectedSpeed, distanceToPlanet)} years\nDo you accept?");
+                ConsoleKeyInfo option = new ConsoleKeyInfo();
+                bool valid = true;
+                Movement game = new Movement();
+
+                while(valid)
+                {
+                    option = Console.ReadKey();
+                    switch(option.Key)
+                    {
+                        case ConsoleKey.Y:
+                            game.MovementMain(self.mySpaceShip, distanceToPlanet, selectedSpeed);
+                            valid = false;
+                            break;
+
+                        case ConsoleKey.N:
+                            Console.Clear();
+                            TravelMenu(self);
+                            break;
+
+                        default:
+                            Console.WriteLine("Invalid input!");
+                            break;
+                    }
+                }
             }
 
-            else
-            {
-                TravelPlanetPrompt(self, toPlanet);
-            }
+     
 
 
 

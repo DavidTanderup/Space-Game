@@ -15,7 +15,7 @@ namespace SpaceCadets
     {
         public string FileLocation()
         {
-            string fileLocation = @"C:\Program Files\Data2.dat";
+            string fileLocation = @"%Userprofile\documents\Data2.dat";
             return fileLocation;
         }
 
