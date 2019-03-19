@@ -77,10 +77,28 @@ namespace SpaceCadets
             }
         }
 
-        public void BuyMenu()
+        public  void BuyMenu(List<Tuple<string,int,double>> ThingsForSale)
         {
             /// TODO: Create seperate Method for buy generator
             /// TODO: Create the INT qty generator
+            Random random = new Random();
+                       
+            int firstItem = random.Next(0, 6);
+            int secondItem = random.Next(0, 6);
+            int thirdItem = random.Next(0, 6);
+            int fourthItem = random.Next(0, 6);
+
+
+
+            Console.WriteLine("Here are the things I have for sale.\n\n");
+
+
+
+            Inventory(ThingsForSale,firstItem, secondItem, thirdItem, fourthItem);
+                                                                           
+        }
+        private List<Tuple<string, int, double>> ThingsForSale()
+        {
             Random random = new Random();
 
             double marsBarsPrice = random.Next(100, 500);
@@ -104,6 +122,9 @@ namespace SpaceCadets
             double zombieRepellentPrice = random.Next(1000,22000);
             int zombieRepellentQty = random.Next(1,100);
 
+            double sunScreenPrice = random.Next(5,49);
+            int sunScreenQty = random.Next(1500,100000);
+
             List<Tuple<string, int, double>> ThingsForSale = new List<Tuple<string,int,double>>() { new Tuple<string,int,double>("Mars Bars",marBarsQty ,marsBarsPrice),
                                                                                             new Tuple<string,int,double>("Moon Pies",moonPieQty ,moonPiePrice),
                                                                                             new Tuple<string,int,double>("Bug Spray",bugSprayQty ,bugSprayPrice),
@@ -112,22 +133,8 @@ namespace SpaceCadets
                                                                                             new Tuple<string,int,double>("Honey [sourced by local Promixa Bees]",honeyQty,honeyPrice),
                                                                                             new Tuple<string,int,double>("Zombie Repellent",zombieRepellentQty ,zombieRepellentPrice)};
 
-                       
-            int firstItem = random.Next(0, 6);
-
-            int secondItem = random.Next(0, 6);
-
-            int thirdItem = random.Next(0, 6);
-
-            int fourthItem = random.Next(0, 6);
-
-
-            Console.WriteLine("Here are the things I have for sale.\n\n");
-
-
-                                                                           
+            return ThingsForSale;
         }
-
          
 
         private void Inventory(List<Tuple<string,int,double>> ThingsForSale , int firstItem, int secondItem, int thirdItem, int fourthItem)
@@ -148,23 +155,56 @@ namespace SpaceCadets
         {
             /// place the buy sell generators outside of the while loop. create an instance of the list
             /// inside the loop. Theory is that the list will not change until the player quits. The list however can be updated to reflect purchases
+            List<Tuple<string, int, double>> buy = ThingsForSale();
             bool inTheMarket = true;
             while (inTheMarket)
             {
-
+                ConsoleKeyInfo userInput = Console.ReadKey();
+                Console.Clear();
                 ChoiceMenu();
-                /// Buy Menu Method
 
-                /// Sell Menu Method
+                /// TODO: Add methods to 
+                switch (userInput.Key)
+                {
+                    case ConsoleKey.NumPad1:
+                        Console.Clear();
+                        BuyMenu(buy);
+                        inTheMarket = true;
+                        break;
+                       
+
+                    case ConsoleKey.D1:
+                        Console.Clear();
+                        BuyMenu(buy);
+
+                        break;
+
+                    case ConsoleKey.D2:
+                        Console.Clear();
+                        Console.WriteLine("Sell Things");
+                        break;
+
+                    case ConsoleKey.NumPad2:
+                        Console.Clear();
+                        Console.WriteLine("Sell Things");
+                        break;
+
+                    case ConsoleKey.Escape:
+                        Console.Clear();
+                        Console.WriteLine("Exit");
+
+                        break;/// Buy Menu Method
+
+                        /// Sell Menu Method
 
 
 
+
+
+                }
 
 
             }
-
-
-        }
 
     }
 }
