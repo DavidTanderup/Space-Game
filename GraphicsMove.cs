@@ -94,14 +94,17 @@ namespace ConsoleApp4
                     }
                 }
 
-            foreach (Coordinate asteroidCoor in AsteroidList)
-            {
-                if ((asteroidCoor.X >= Hero.X && asteroidCoor.X <= Hero.X + someShip.rep.Length) && asteroidCoor.Y == Hero.Y)
+                foreach (Coordinate asteroidCoor in AsteroidList)
                 {
-                    alive = false;
+                    if ((asteroidCoor.X >= Hero.X && asteroidCoor.X <= Hero.X + someShip.rep.Length) && asteroidCoor.Y == Hero.Y)
+                    {
+                        alive = false;
+                    }
                 }
             }
-            }
+            Console.Clear();
+            Console.SetCursorPosition(height, width);
+            Console.Write("You Dead!");
         }
 
 

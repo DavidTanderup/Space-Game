@@ -128,7 +128,7 @@ namespace SpaceCadets
                                                                            
         }
 
-        private 
+         
 
         private void Inventory(List<Tuple<string,int,double>> ThingsForSale , int firstItem, int secondItem, int thirdItem, int fourthItem)
         {

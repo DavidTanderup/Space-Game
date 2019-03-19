@@ -16,7 +16,6 @@ namespace ConsoleApp4
     {
 
 
-
         static void Main(string[] args)
         {
             MarketPlace marketPlace = new MarketPlace();
@@ -36,9 +35,9 @@ namespace ConsoleApp4
 
             SpaceShip SpaceShipOptions = new SpaceShip();
 
-            Engines myEngine = SpaceShipOptions.Engine3;
-            Fuel myFuel = SpaceShipOptions.Fuel3;
-            Cargo myCargo = SpaceShipOptions.Cargo3;
+            Engines myEngine = SpaceShipOptions.Engine1;
+            Fuel myFuel = SpaceShipOptions.Fuel1;
+            Cargo myCargo = SpaceShipOptions.Cargo1;
 
             SpaceShip mySpaceShip = new SpaceShip(myEngine, myFuel, myCargo);
 
@@ -57,7 +56,7 @@ namespace ConsoleApp4
             ////Console.WriteLine($"Distance is {Dist} Light years");
             ////Console.WriteLine($"Travel time is {form.TravelTime(WS, Dist)*365} days");
 
-
+            
             ////for (int i = 0; i < 10; i++)
             ////{
             ////    Console.WriteLine($"Speed {i} is {form.WarpSpeed(i)} x the Speed of Light");
