@@ -207,6 +207,11 @@ namespace SpaceCadets
 
         }
 
+
+        /// <summary>
+        /// Buy and sell list return the same value
+        /// Create the selection menu
+        /// </summary>
         public void MarketPlaceMethod()
         {
 
