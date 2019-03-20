@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Timers;
+using System.Diagnostics;
 
 
 public class Resources
@@ -38,10 +40,11 @@ namespace ConsoleApp4
 
 
 
-        public void MovementMain(Ships.SpaceShip someShip, double Distance, double Speed) //list of asteroid?? mySpaceShip will be passed
+        public void MovementMain(SpaceCadets.Characters self , double Distance, double Speed) //list of asteroid?? mySpaceShip will be passed
         {
+            bool alive = true;
             Asteroids ast = new Asteroids();
-            InitGame(someShip.rep);
+            InitGame(self.mySpaceShip.rep);
             int width = Console.WindowWidth-1;
             int height = Console.WindowHeight;
             List<Coordinate> AsteroidList = new List<Coordinate> { };
@@ -50,61 +53,80 @@ namespace ConsoleApp4
                 AsteroidList.Insert(AsteroidList.Count, ast.spawnAsteroid(width, height));
                 ast.AsteroidMover(AsteroidList);
             }
-
-            bool alive = true;
             ConsoleKeyInfo keyInfo;
             int CycleCounter = 0;
+            double refreshVar = 50/Speed;
+            int timeLength = 2 *  Convert.ToInt32(Math.Round(Distance)*200); //200 * 5ms per loop = ceiling counter
+            int timeCounter = 0;
 
-            while (alive)
             {
-                if (CycleCounter == 50)
+                while (alive && timeCounter<timeLength)
                 {
-                ast.AsteroidMover(AsteroidList);
-                AsteroidList.Insert(AsteroidList.Count, ast.spawnAsteroid(width, height));
-                    CycleCounter = 0;
-                }   
-                System.Threading.Thread.Sleep(5);
-                CycleCounter++;
-
-                if (Console.KeyAvailable)
-                {
-                    keyInfo = Console.ReadKey(true);
-                    switch (keyInfo.Key)
+                    if (CycleCounter == refreshVar)
                     {
-                        case ConsoleKey.UpArrow:
-                            MoveHero(0, -1, someShip.rep);
-                            break;
-
-                        case ConsoleKey.RightArrow:
-                            MoveHero(1, 0, someShip.rep);
-                            break;
-
-                        case ConsoleKey.DownArrow:
-                            MoveHero(0, 1, someShip.rep);
-                            break;
-
-                        case ConsoleKey.LeftArrow:
-                            MoveHero(-1, 0, someShip.rep);
-                            break;
-
-                        case ConsoleKey.Spacebar:
-                            AsteroidList.Insert(AsteroidList.Count, ast.spawnAsteroid(width, height));
-                            break;
-
+                        ast.AsteroidMover(AsteroidList);
+                        AsteroidList.Insert(AsteroidList.Count, ast.spawnAsteroid(width, height));
+                        CycleCounter = 0;
                     }
-                }
+                    System.Threading.Thread.Sleep(5);
+                    CycleCounter++;
+                    timeCounter++;
 
-                foreach (Coordinate asteroidCoor in AsteroidList)
-                {
-                    if ((asteroidCoor.X >= Hero.X && asteroidCoor.X <= Hero.X + someShip.rep.Length) && asteroidCoor.Y == Hero.Y)
+                    if (Console.KeyAvailable)
                     {
-                        alive = false;
+                        keyInfo = Console.ReadKey(true);
+                        switch (keyInfo.Key)
+                        {
+                            case ConsoleKey.UpArrow:
+                                MoveHero(0, -1, self.mySpaceShip.rep);
+                                break;
+
+                            case ConsoleKey.RightArrow:
+                                MoveHero(1, 0, self.mySpaceShip.rep);
+                                break;
+
+                            case ConsoleKey.DownArrow:
+                                MoveHero(0, 1, self.mySpaceShip.rep);
+                                break;
+
+                            case ConsoleKey.LeftArrow:
+                                MoveHero(-1, 0, self.mySpaceShip.rep);
+                                break;
+
+                            case ConsoleKey.Spacebar:
+                                AsteroidList.Insert(AsteroidList.Count, ast.spawnAsteroid(width, height));
+                                break;
+
+                        }
+                    }
+
+                    foreach (Coordinate asteroidCoor in AsteroidList)
+                    {
+                        if ((asteroidCoor.X >= Hero.X && asteroidCoor.X <= Hero.X + self.mySpaceShip.rep.Length) && asteroidCoor.Y == Hero.Y)
+                        {
+                            alive = false;
+                        }
                     }
                 }
             }
             Console.Clear();
             Console.SetCursorPosition(height, width);
-            Console.Write("You Dead!");
+            if (alive == true)
+            {
+                Formulas form = new Formulas();
+                SpaceCadets.Menus menu = new SpaceCadets.Menus();
+                double tripTime = Distance / form.WarpSpeed(Speed);
+                self.Age += tripTime;
+                menu.MainMenu(self);
+
+            }
+            else if (alive == false)
+            {
+                Console.WriteLine("You dead");
+            }
+
+
+
         }
 
 

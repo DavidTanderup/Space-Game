@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SpaceCadets
 {
     public class Planet
-    {       
+    {
         public string PlanetName { get; set; }
         public (double, double) PlanetCoordinate { get; set; }
         private double PlanetSize { get; set; }

@@ -9,7 +9,7 @@ namespace SpaceCadets
 {
     class MarketPlace
     {
-      
+
         public void Greeting()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -50,7 +50,7 @@ namespace SpaceCadets
                     Console.WriteLine("1) Purchase");
                     Console.WriteLine("2) Leave");
                     i = 1;
-                    BuyChoiceSelection(buy,i);
+                    BuyChoiceSelection(buy, i);
                     break;
                 case ConsoleKey.NumPad1:
                     Console.Clear();
@@ -58,7 +58,7 @@ namespace SpaceCadets
                     Console.WriteLine("1) Purchase");
                     Console.WriteLine("2) Leave [Escape]");
                     i = 1;
-                    BuyChoiceSelection(buy,i);
+                    BuyChoiceSelection(buy, i);
                     break;
                 case ConsoleKey.D2:
                     Console.Clear();
@@ -66,7 +66,7 @@ namespace SpaceCadets
                     Console.WriteLine("1) Purchase");
                     Console.WriteLine("2) Leave");
                     i = 2;
-                    BuyChoiceSelection(buy,i);
+                    BuyChoiceSelection(buy, i);
                     break;
                 case ConsoleKey.NumPad2:
                     Console.Clear();
@@ -74,7 +74,7 @@ namespace SpaceCadets
                     Console.WriteLine("1) Purchase");
                     Console.WriteLine("2) Leave [Escape]");
                     i = 2;
-                    BuyChoiceSelection(buy,i);
+                    BuyChoiceSelection(buy, i);
                     break;
                 case ConsoleKey.D3:
                     Console.Clear();
@@ -82,7 +82,7 @@ namespace SpaceCadets
                     Console.WriteLine("1) Purchase");
                     Console.WriteLine("2) Leave");
                     i = 3;
-                    BuyChoiceSelection(buy,i);
+                    BuyChoiceSelection(buy, i);
                     break;
                 case ConsoleKey.NumPad3:
                     Console.Clear();
@@ -90,7 +90,7 @@ namespace SpaceCadets
                     Console.WriteLine("1) Purchase");
                     Console.WriteLine("2) Leave [Escape]");
                     i = 3;
-                    BuyChoiceSelection(buy,i);
+                    BuyChoiceSelection(buy, i);
                     break;
                 case ConsoleKey.D4:
                     Console.Clear();
@@ -98,7 +98,7 @@ namespace SpaceCadets
                     Console.WriteLine("1) Purchase");
                     Console.WriteLine("2) Leave");
                     i = 4;
-                    BuyChoiceSelection(buy,i);
+                    BuyChoiceSelection(buy, i);
                     break;
                 case ConsoleKey.NumPad4:
                     Console.Clear();
@@ -106,7 +106,7 @@ namespace SpaceCadets
                     Console.WriteLine("1) Purchase");
                     Console.WriteLine("2) Leave [Escape]");
                     i = 4;
-                    BuyChoiceSelection(buy,i);
+                    BuyChoiceSelection(buy, i);
                     break;
                 case ConsoleKey.Escape:
                     break;
@@ -116,7 +116,7 @@ namespace SpaceCadets
         /// TODO: Update account and Inventory
         /// </summary>
         /// <param name="sell"></param>
-      
+
 
         private void BuyChoiceSelection(List<Tuple<string, int, double>> sell, int i)
         {
@@ -147,87 +147,5 @@ namespace SpaceCadets
                     break;
             }
         }
-
-        public List<ItemResources> MasterInventory()
-        {
-            Planet planet = new Planet();
-            var planetList = planet.PlanetSystem();
-            ItemResources MarsBars = new ItemResources(planetList[0], "Mars Bars", 500, 250);
-            ItemResources SunScreen = new ItemResources(planetList[0], "Sun Screen", 1, 100); /// stretch goal. sell 42 to earth you get $500,000
-            ItemResources MoonPies = new ItemResources(planetList[1], "Moon Pies", 1000, 750);
-            ItemResources Honey = new ItemResources(planetList[2], "Honey[sourced by local Promixa Bees]", 1000, 500);
-            ItemResources Widgets = new ItemResources(planetList[4], "Widgets",18000,25);
-            ItemResources BugSprayPrice = new ItemResources(planetList[5], "Bug Spray", 1000, 90);
-            ItemResources ZombieRepellent = new ItemResources(planetList[6],"Zombie Repellent",15000, 60);
-            ItemResources Kryptonite = new ItemResources(planetList[3], "Kryptonite", 300000, 5);
-
-            List<ItemResources> MarketItems = new List<ItemResources>() { MarsBars, SunScreen, MoonPies, Honey, Widgets,
-                                                                          BugSprayPrice, ZombieRepellent, Kryptonite};
-            return MarketItems;
-
-        }
-
-        public void InTheMarket()
-        {
-                       
-            
-            ChoiceMenu();
-
-            bool inTheMarket = true;
-            while (inTheMarket)
-            {
-                ConsoleKeyInfo userInput = Console.ReadKey();
-                Console.Clear();
-                ChoiceMenu();
-
-                /// TODO: Add methods to 
-                switch (userInput.Key)
-                {
-                    case ConsoleKey.NumPad1:
-                        Console.Clear();
-                        List<Tuple<string, int, double>> purchase = BuyMenu(buy);
-                        BuyItemsMenu(purchase);
-                        inTheMarket = true;
-                        break;
-
-
-                    case ConsoleKey.D1:
-                        Console.Clear();
-                        BuyMenu(buy);
-                        BuyItemsMenu(buy);
-                        inTheMarket = true;
-                        break;
-
-                    case ConsoleKey.D2:
-                        Console.Clear();
-                        SellMenu(sell);
-                        inTheMarket = true;
-                        break;
-
-                    case ConsoleKey.NumPad2:
-                        Console.Clear();
-                        SellMenu(sell);
-                        inTheMarket = true;
-                        break;
-
-                    case ConsoleKey.Escape:
-                        Console.Clear();
-                        Console.WriteLine("Exit");
-                        inTheMarket = false;
-                        break;/// Buy Menu Method
-
-                        /// Sell Menu Method
-
-
-
-
-
-                }
-
-
-            }
-        }
-
-
     }
 }

@@ -10,11 +10,12 @@ namespace SpaceCadets
     class Characters
     {
         public string name ;
-        public int money;
+        public double money;
         public double Age;
         public Planet location;
         public SpaceShip mySpaceShip = new SpaceShip();
         public bool Alive;
+        public List<(string item, double quantity)> inventory;
         
         //skills
         //distance traveled
