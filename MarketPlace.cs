@@ -38,6 +38,42 @@ namespace SpaceCadets
 
 
 
+
+
+        private void BuyChoiceSelection(List<Tuple<string, int, double>> sell, int i)
+        {
+            ConsoleKeyInfo userInput = Console.ReadKey();
+            switch (userInput.Key)
+            {
+                case ConsoleKey.D1:
+                    Console.Clear();
+                    Console.Write("Enter Qty to purchase: \n");
+                    int qtyToPurchase = Console.Read();
+                    double price = qtyToPurchase * sell[i].Item3;
+                    Console.WriteLine($"That will cost {price:C}");
+                    Console.WriteLine("Do you wish to complete the purchase?\n");
+                    Console.WriteLine("1) Yes");/// update bank account and inventory
+                    Console.WriteLine("2) No"); /// leave
+                    break;
+                case ConsoleKey.NumPad1:
+                    Console.Clear();
+                    Console.Write("Enter Qty to purchase: \n");
+                    int qtyToPurchase_ = Console.Read();
+                    double price_ = qtyToPurchase_ * sell[i].Item3;
+                    Console.WriteLine($"That will cost {price_:C}");
+                    Console.WriteLine("Do you wish to complete the purchase?\n");
+                    Console.WriteLine("1) Yes");/// update bank account and inventory
+                    Console.WriteLine("2) No"); /// leave
+                    break;
+                case ConsoleKey.Escape:
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// TODO: Update account and Inventory
+        /// </summary>
+        /// <param name="sell"></param>
         private void BuyItemsMenu(List<Tuple<string, int, double>> buy)
         {
             int i = 0;
@@ -112,40 +148,100 @@ namespace SpaceCadets
                     break;
             }
         }
-        /// <summary>
-        /// TODO: Update account and Inventory
-        /// </summary>
-        /// <param name="sell"></param>
-
-
-        private void BuyChoiceSelection(List<Tuple<string, int, double>> sell, int i)
+        public List<MarketResources> Resources()
         {
-            ConsoleKeyInfo userInput = Console.ReadKey();
-            switch (userInput.Key)
+            Planet planet = new Planet();
+            var planetList = planet.PlanetSystem();
+            MarketResources MarsBars = new MarketResources(planetList[0], "Mars Bars", 500, 250);
+            MarketResources SunScreen = new MarketResources(planetList[0], "Sun Screen", 100, 1); /// TODO: 42 sold on earth will give $500,000
+            MarketResources MoonPies = new MarketResources(planetList[1], "Moon Pies", 600, 200);
+            MarketResources Honey = new MarketResources(planetList[2], "Honey [sourced by local Proxima Bees]", 1000, 500);
+            MarketResources Kryptonite = new MarketResources(planetList[3], "Kryptonite", 500, 15000);
+            MarketResources Widgets = new MarketResources(planetList[4], "Widget", 1000, 800);
+            MarketResources BugSpray = new MarketResources(planetList[5], "Bug Spray by K", 1000, 486);
+            MarketResources ZombieRepellent = new MarketResources(planetList[6], "Zombie Repellent", 750, 7200);
+
+            List<MarketResources> Inventory = new List<MarketResources>() { MarsBars, SunScreen, MoonPies, Honey, Kryptonite, Widgets, BugSpray, ZombieRepellent };
+            return Inventory;
+        }
+
+        private void Inventory(string buySell)
+        {
+            var marketDisplay = Resources();
+
+            int i = 0;
+            foreach (var item in marketDisplay)
             {
-                case ConsoleKey.D1:
-                    Console.Clear();
-                    Console.Write("Enter Qty to purchase: \n");
-                    int qtyToPurchase = Console.Read();
-                    double price = qtyToPurchase * sell[i].Item3;
-                    Console.WriteLine($"That will cost {price:C}");
-                    Console.WriteLine("Do you wish to complete the purchase?\n");
-                    Console.WriteLine("1) Yes");/// update bank account and inventory
-                    Console.WriteLine("2) No"); /// leave
-                    break;
-                case ConsoleKey.NumPad1:
-                    Console.Clear();
-                    Console.Write("Enter Qty to purchase: \n");
-                    int qtyToPurchase_ = Console.Read();
-                    double price_ = qtyToPurchase_ * sell[i].Item3;
-                    Console.WriteLine($"That will cost {price_:C}");
-                    Console.WriteLine("Do you wish to complete the purchase?\n");
-                    Console.WriteLine("1) Yes");/// update bank account and inventory
-                    Console.WriteLine("2) No"); /// leave
-                    break;
-                case ConsoleKey.Escape:
-                    break;
+                if (buySell.ToLower() == "sell")
+                {
+                    Console.WriteLine($"Item: {marketDisplay[i].Name} || Quantity: {marketDisplay[i].Quantity} || Price {(marketDisplay[i].Price) * .75:C}");
+
+                }
+                else if (buySell.ToLower() != "sell")
+                {
+                    Console.WriteLine($"Item: {marketDisplay[i].Name} || Quantity: {marketDisplay[i].Quantity} || Price {marketDisplay[i].Price:C}");
+
+                }
+
+                i++;
             }
         }
+
+        public void InTheMarketPlace()
+        {
+
+            bool stillHere = true;
+
+            ChoiceMenu();
+            
+            while (stillHere)
+            {
+
+                ConsoleKeyInfo userInput = Console.ReadKey();
+                Console.Clear();
+                ChoiceMenu();
+
+                switch (userInput.Key)
+                {
+                    case ConsoleKey.D1:
+                        Console.Clear();
+                        Inventory("");
+                        stillHere = true;
+                        break;
+
+                    case ConsoleKey.NumPad1:
+                        Console.Clear();
+                        Inventory("");
+                        stillHere = true;
+                        break;
+
+                    case ConsoleKey.D2:
+                        Console.Clear();
+                        Inventory("sell");
+                        stillHere = true;
+                        break;
+
+                    case ConsoleKey.NumPad2:
+                        Console.Clear();
+                        Inventory("sell");
+                        stillHere = true;
+                        break;
+
+                    case ConsoleKey.Escape:
+                        Console.Clear();
+                        Console.WriteLine("Exit");
+                        stillHere = false;
+                        break;
+
+
+
+                }
+
+            }
+        }
+
+
+
     }
+
 }

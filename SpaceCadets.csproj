@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Asteroids.cs" />
     <Compile Include="Characters.cs" />
+    <Compile Include="MarketResources.cs" />
     <Compile Include="Formulas.cs" />
     <Compile Include="GraphicsMove.cs" />
     <Compile Include="MarketPlace.cs" />
