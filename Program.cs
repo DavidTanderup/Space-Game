@@ -18,6 +18,7 @@ namespace ConsoleApp4
 
         static void Main(string[] args)
         {
+            
             Random r = new Random();
 
             MarketPlace marketPlace = new MarketPlace(ref r);

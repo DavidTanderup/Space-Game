@@ -9,11 +9,7 @@ namespace SpaceCadets
 {
     class MarketPlace
     {
-        Random r;
-        public MarketPlace(ref Random r)
-        {
-            this.r = r;
-        }
+      
         public void Greeting()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -37,160 +33,144 @@ namespace SpaceCadets
 
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.Write("\nOh mighty Space Trader please honor us with your selection: ");
-            
+
         }
 
+
+
+        private void BuyItemsMenu(List<Tuple<string, int, double>> buy)
+        {
+            int i = 0;
+            ConsoleKeyInfo userInput = Console.ReadKey();
+            switch (userInput.Key)
+            {
+                case ConsoleKey.D1:
+                    Console.Clear();
+                    Console.WriteLine($"Item: {buy[0].Item1} || Quantity: {buy[0].Item2} || Price: {buy[0].Item3}\n");
+                    Console.WriteLine("1) Purchase");
+                    Console.WriteLine("2) Leave");
+                    i = 1;
+                    BuyChoiceSelection(buy,i);
+                    break;
+                case ConsoleKey.NumPad1:
+                    Console.Clear();
+                    Console.WriteLine($"Item: {buy[0].Item1} || Quantity: {buy[0].Item2} || Price: {buy[0].Item3}\n");
+                    Console.WriteLine("1) Purchase");
+                    Console.WriteLine("2) Leave [Escape]");
+                    i = 1;
+                    BuyChoiceSelection(buy,i);
+                    break;
+                case ConsoleKey.D2:
+                    Console.Clear();
+                    Console.WriteLine($"Item: {buy[1].Item1} || Quantity: {buy[1].Item2} || Price: {buy[1].Item3}\n");
+                    Console.WriteLine("1) Purchase");
+                    Console.WriteLine("2) Leave");
+                    i = 2;
+                    BuyChoiceSelection(buy,i);
+                    break;
+                case ConsoleKey.NumPad2:
+                    Console.Clear();
+                    Console.WriteLine($"Item: {buy[1].Item1} || Quantity: {buy[1].Item2} || Price: {buy[1].Item3}\n");
+                    Console.WriteLine("1) Purchase");
+                    Console.WriteLine("2) Leave [Escape]");
+                    i = 2;
+                    BuyChoiceSelection(buy,i);
+                    break;
+                case ConsoleKey.D3:
+                    Console.Clear();
+                    Console.WriteLine($"Item: {buy[2].Item1} || Quantity: {buy[2].Item2} || Price: {buy[2].Item3}\n");
+                    Console.WriteLine("1) Purchase");
+                    Console.WriteLine("2) Leave");
+                    i = 3;
+                    BuyChoiceSelection(buy,i);
+                    break;
+                case ConsoleKey.NumPad3:
+                    Console.Clear();
+                    Console.WriteLine($"Item: {buy[3].Item1} || Quantity: {buy[3].Item2} || Price: {buy[3].Item3}\n");
+                    Console.WriteLine("1) Purchase");
+                    Console.WriteLine("2) Leave [Escape]");
+                    i = 3;
+                    BuyChoiceSelection(buy,i);
+                    break;
+                case ConsoleKey.D4:
+                    Console.Clear();
+                    Console.WriteLine($"Item: {buy[0].Item1} || Quantity: {buy[0].Item2} || Price: {buy[0].Item3}\n");
+                    Console.WriteLine("1) Purchase");
+                    Console.WriteLine("2) Leave");
+                    i = 4;
+                    BuyChoiceSelection(buy,i);
+                    break;
+                case ConsoleKey.NumPad4:
+                    Console.Clear();
+                    Console.WriteLine($"Item: {buy[0].Item1} || Quantity: {buy[0].Item2} || Price: {buy[0].Item3}\n");
+                    Console.WriteLine("1) Purchase");
+                    Console.WriteLine("2) Leave [Escape]");
+                    i = 4;
+                    BuyChoiceSelection(buy,i);
+                    break;
+                case ConsoleKey.Escape:
+                    break;
+            }
+        }
         /// <summary>
-        /// Generates the items the user can purchase.
+        /// TODO: Update account and Inventory
         /// </summary>
-        /// <param name="ThingsForSale"></param>
-        public  void BuyMenu(List<Tuple<string,int,double>> ThingsICanBuy)
+        /// <param name="sell"></param>
+      
+
+        private void BuyChoiceSelection(List<Tuple<string, int, double>> sell, int i)
         {
-            
-            Random random = new Random();
-                       
-            int firstItem1 = random.Next(0, 2);
-            int secondItem1 = random.Next(2, 4);
-            int thirdItem1 = random.Next(4, 6);
-            int fourthItem1 = random.Next(6, 8);
-
-
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine("Here are the things I have for sale.");
-            Console.WriteLine("==============================================\n\n");
-
-            BuyInventory(ThingsICanBuy,firstItem1, secondItem1, thirdItem1, fourthItem1);
-
-
-                                                                           
-        }
-        private List<Tuple<string, int, double>> ThingsToBuy()
-        {
-
-            double marsBarsPrice = r.Next(100, 500);
-            int marBarsQty = r.Next(100, 500);
-
-            double moonPiePrice = r.Next(500, 1000);
-            int moonPieQty = r.Next(1, 1000);
-
-            double bugSprayPrice = r.Next(25, 100);
-            int bugSprayQty = r.Next(1, 1500);
-
-            double widgetsPrice = r.Next(300, 1600);
-            int widgetsQty = r.Next(500, 850);
-
-            double kryptonitePrice = r.Next(5000, 18000);
-            int kryptoniteQty = r.Next(6, 87);
-
-            double honeyPrice = r.Next(1, 60);
-            int honeyQty = r.Next(1000, 100000);
-
-            double zombieRepellentPrice = r.Next(1000, 22000);
-            int zombieRepellentQty = r.Next(1, 100);
-
-            double sunScreenPrice = r.Next(5, 49);
-            int sunScreenQty = r.Next(1500, 100000);
-
-            List<Tuple<string, int, double>> ThingsICanBuy = new List<Tuple<string, int, double>>() { new Tuple<string,int,double>("Mars Bars",marBarsQty ,marsBarsPrice),
-                                                                                            new Tuple<string,int,double>("Moon Pies",moonPieQty ,moonPiePrice),
-                                                                                            new Tuple<string,int,double>("Bug Spray",bugSprayQty ,bugSprayPrice),
-                                                                                            new Tuple<string,int,double>("Widgets",widgetsQty ,widgetsPrice),
-                                                                                            new Tuple<string,int,double>("Kryptonite",kryptoniteQty ,kryptonitePrice),
-                                                                                            new Tuple<string,int,double>("Honey [sourced by local Promixa Bees]",honeyQty,honeyPrice),
-                                                                                            new Tuple<string,int,double>("Zombie Repellent",zombieRepellentQty ,zombieRepellentPrice),
-                                                                                            new Tuple<string, int, double>("Sun Screen",sunScreenQty,sunScreenPrice)};
-
-            return ThingsICanBuy;
+            ConsoleKeyInfo userInput = Console.ReadKey();
+            switch (userInput.Key)
+            {
+                case ConsoleKey.D1:
+                    Console.Clear();
+                    Console.Write("Enter Qty to purchase: \n");
+                    int qtyToPurchase = Console.Read();
+                    double price = qtyToPurchase * sell[i].Item3;
+                    Console.WriteLine($"That will cost {price:C}");
+                    Console.WriteLine("Do you wish to complete the purchase?\n");
+                    Console.WriteLine("1) Yes");/// update bank account and inventory
+                    Console.WriteLine("2) No"); /// leave
+                    break;
+                case ConsoleKey.NumPad1:
+                    Console.Clear();
+                    Console.Write("Enter Qty to purchase: \n");
+                    int qtyToPurchase_ = Console.Read();
+                    double price_ = qtyToPurchase_ * sell[i].Item3;
+                    Console.WriteLine($"That will cost {price_:C}");
+                    Console.WriteLine("Do you wish to complete the purchase?\n");
+                    Console.WriteLine("1) Yes");/// update bank account and inventory
+                    Console.WriteLine("2) No"); /// leave
+                    break;
+                case ConsoleKey.Escape:
+                    break;
+            }
         }
 
-
-        /// <summary>
-        /// Generates the menu the merchant in willing to buy.
-        /// </summary>
-        /// <param name="ThingsForSale"></param>
-        public void SellMenu(List<Tuple<string, int, double>> ThingsIWantToSell)
+        public List<ItemResources> MasterInventory()
         {
-            Random random = new Random();
+            Planet planet = new Planet();
+            var planetList = planet.PlanetSystem();
+            ItemResources MarsBars = new ItemResources(planetList[0], "Mars Bars", 500, 250);
+            ItemResources SunScreen = new ItemResources(planetList[0], "Sun Screen", 1, 100); /// stretch goal. sell 42 to earth you get $500,000
+            ItemResources MoonPies = new ItemResources(planetList[1], "Moon Pies", 1000, 750);
+            ItemResources Honey = new ItemResources(planetList[2], "Honey[sourced by local Promixa Bees]", 1000, 500);
+            ItemResources Widgets = new ItemResources(planetList[4], "Widgets",18000,25);
+            ItemResources BugSprayPrice = new ItemResources(planetList[5], "Bug Spray", 1000, 90);
+            ItemResources ZombieRepellent = new ItemResources(planetList[6],"Zombie Repellent",15000, 60);
+            ItemResources Kryptonite = new ItemResources(planetList[3], "Kryptonite", 300000, 5);
 
-            int firstItem = random.Next(0, 2);
-            int secondItem = random.Next(2, 4);
-            int thirdItem = random.Next(4, 6);
-            int fourthItem = random.Next(6, 8);
-
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine("Here are the things I am willing to buy.");
-            Console.WriteLine("==============================================\n\n");
-            SellInventory(ThingsIWantToSell, firstItem, secondItem, thirdItem, fourthItem);
-        }
-        private List<Tuple<string, int, double>> ThingsToSell()
-        {
-
-            double marsBarsPrice = r.Next(100, 500);
-            int marBarsQty = r.Next(100,500);
-
-            double moonPiePrice = r.Next(500, 1000);
-            int moonPieQty = r.Next(1,1000);
-
-            double bugSprayPrice = r.Next(25,100);
-            int bugSprayQty = r.Next(1,1500);
-
-            double widgetsPrice = r.Next(300,1600);
-            int widgetsQty = r.Next(500,850);
-
-            double kryptonitePrice = r.Next(5000,18000);
-            int kryptoniteQty = r.Next(6,87);
-
-            double honeyPrice = r.Next(1,60);
-            int honeyQty = r.Next(1000,100000);
-
-            double zombieRepellentPrice = r.Next(1000,22000);
-            int zombieRepellentQty = r.Next(1,100);
-
-            double sunScreenPrice = r.Next(5,49);
-            int sunScreenQty = r.Next(1500,100000);
-
-            List<Tuple<string, int, double>> ThingsIWantToSell = new List<Tuple<string,int,double>>() { new Tuple<string,int,double>("Mars Bars",marBarsQty ,marsBarsPrice),
-                                                                                            new Tuple<string,int,double>("Moon Pies",moonPieQty ,moonPiePrice),
-                                                                                            new Tuple<string,int,double>("Bug Spray",bugSprayQty ,bugSprayPrice),
-                                                                                            new Tuple<string,int,double>("Widgets",widgetsQty ,widgetsPrice),
-                                                                                            new Tuple<string,int,double>("Kryptonite",kryptoniteQty ,kryptonitePrice),
-                                                                                            new Tuple<string,int,double>("Honey [sourced by local Promixa Bees]",honeyQty,honeyPrice),
-                                                                                            new Tuple<string,int,double>("Zombie Repellent",zombieRepellentQty ,zombieRepellentPrice),
-                                                                                            new Tuple<string, int, double>("Sun Screen", sunScreenQty, sunScreenPrice)};
-            return ThingsIWantToSell;
-        }
-         
-
-
-
-        private void BuyInventory(List<Tuple<string,int,double>> ThingsForSale , int firstItem, int secondItem, int thirdItem, int fourthItem)
-        {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine($"1) Item: {ThingsForSale[firstItem].Item1} || Quantity: {ThingsForSale[firstItem].Item2}  ||  Price: {ThingsForSale[firstItem].Item3:C}\n");
-            Console.WriteLine($"2) Item: {ThingsForSale[secondItem].Item1} || Quantity: {ThingsForSale[secondItem].Item2}  ||  Price: {ThingsForSale[secondItem].Item3:C}\n");
-            Console.WriteLine($"3) Item: {ThingsForSale[thirdItem].Item1} || Quantity: {ThingsForSale[thirdItem].Item2}  ||  Price: {ThingsForSale[thirdItem].Item3:C}\n");
-            Console.WriteLine($"4) Item: {ThingsForSale[fourthItem].Item1} || Quantity: {ThingsForSale[fourthItem].Item2}  ||  Price: {ThingsForSale[fourthItem].Item3:C}");
-
+            List<ItemResources> MarketItems = new List<ItemResources>() { MarsBars, SunScreen, MoonPies, Honey, Widgets,
+                                                                          BugSprayPrice, ZombieRepellent, Kryptonite};
+            return MarketItems;
 
         }
-        private void SellInventory(List<Tuple<string, int, double>> ThingsForSale, int firstItem, int secondItem, int thirdItem, int fourthItem)
-        {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine($"1) Item: {ThingsForSale[firstItem].Item1} || Quantity: {ThingsForSale[firstItem].Item2}  ||  Price: {ThingsForSale[firstItem].Item3:C}\n");
-            Console.WriteLine($"2) Item: {ThingsForSale[secondItem].Item1} || Quantity: {ThingsForSale[secondItem].Item2}  ||  Price: {ThingsForSale[secondItem].Item3:C}\n");
-            Console.WriteLine($"3) Item: {ThingsForSale[thirdItem].Item1} || Quantity: {ThingsForSale[thirdItem].Item2}  ||  Price: {ThingsForSale[thirdItem].Item3:C}\n");
-            Console.WriteLine($"4) Item: {ThingsForSale[fourthItem].Item1} || Quantity: {ThingsForSale[fourthItem].Item2}  ||  Price: {ThingsForSale[fourthItem].Item3:C}");
-
-
-        }
-
 
         public void InTheMarket()
         {
-            /// place the buy sell generators outside of the while loop. create an instance of the list
-            /// inside the loop. Theory is that the list will not change until the player quits. The list however can be updated to reflect purchases
-            List<Tuple<string, int, double>> buy = ThingsToBuy();
-            List<Tuple<string, int, double>> sell = ThingsToSell();
+                       
+            
             ChoiceMenu();
 
             bool inTheMarket = true;
@@ -205,7 +185,8 @@ namespace SpaceCadets
                 {
                     case ConsoleKey.NumPad1:
                         Console.Clear();
-                        BuyMenu(buy);
+                        List<Tuple<string, int, double>> purchase = BuyMenu(buy);
+                        BuyItemsMenu(purchase);
                         inTheMarket = true;
                         break;
 
@@ -213,6 +194,7 @@ namespace SpaceCadets
                     case ConsoleKey.D1:
                         Console.Clear();
                         BuyMenu(buy);
+                        BuyItemsMenu(buy);
                         inTheMarket = true;
                         break;
 

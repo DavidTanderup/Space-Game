@@ -48,6 +48,7 @@
     <Compile Include="Characters.cs" />
     <Compile Include="Formulas.cs" />
     <Compile Include="GraphicsMove.cs" />
+    <Compile Include="ItemResources.cs" />
     <Compile Include="MarketPlace.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Planets.cs" />
