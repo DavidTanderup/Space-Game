@@ -57,11 +57,5 @@
     <Compile Include="SaveAndLoadGame.cs" />
     <Compile Include="SpaceShip.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\Class Library.csproj">
-      <Project>{d193a0e1-bad9-45f6-8b60-1a90ceda100a}</Project>
-      <Name>Class Library</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
