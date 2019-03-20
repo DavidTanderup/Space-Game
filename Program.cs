@@ -18,9 +18,7 @@ namespace ConsoleApp4
 
         static void Main(string[] args)
         {
-            MarketPlace marketPlace = new MarketPlace();
-
-            marketPlace.
+            
         //    SaveAndLoadGame saveAndLoadGame = new SaveAndLoadGame();
 
         //    List<Tuple<string, bool>> tuples = new List<Tuple<string, bool>>() { };
@@ -29,22 +27,22 @@ namespace ConsoleApp4
         //    //marketPlace.Greeting();
         //    //marketPlace.ChoiceMenu();
      
-        //    Planet planet = new Planet();
-        //    var ListofPlanets = planet.PlanetSystem();
-        //    var Earth = ListofPlanets[0];
+            Planet planet = new Planet();
+            var ListofPlanets = planet.PlanetSystem();
+            var Earth = ListofPlanets[0];
         //    var ProximaB = ListofPlanets[2];
-        //    string name = "bob";
+            string name = "bob";
 
-        //    SpaceShip SpaceShipOptions = new SpaceShip();
+                SpaceShip SpaceShipOptions = new SpaceShip();
 
-        //    Engines myEngine = SpaceShipOptions.Engine1;
-        //    Fuel myFuel = SpaceShipOptions.Fuel1;
-        //    Cargo myCargo = SpaceShipOptions.Cargo1;
+            Engines myEngine = SpaceShipOptions.Engine1;
+            Fuel myFuel = SpaceShipOptions.Fuel1;
+            Cargo myCargo = SpaceShipOptions.Cargo1;
 
-        //    SpaceShip mySpaceShip = new SpaceShip(myEngine, myFuel, myCargo);
+            SpaceShip mySpaceShip = new SpaceShip(myEngine, myFuel, myCargo);
 
         //    Formulas form = new Formulas();
-        //    Characters self = new Characters(5000, 12, Earth, name, mySpaceShip, true);
+            Characters self = new Characters(5000, 12, Earth, name, mySpaceShip, true);
         //    ////SpaceShip mySpaceShip = new SpaceShip(myEngine, myFuel, myCargo);
         //    ////string SpaceShipRep = mySpaceShip.Engine3.rep + mySpaceShip.Fuel3.rep + mySpaceShip.Cargo3.rep + mySpaceShip.nose;
 
@@ -73,8 +71,8 @@ namespace ConsoleApp4
         //    //int wWidth = Console.WindowWidth;
         //    //int wHeight = Console.WindowHeight;
         //    //Console.WriteLine("Something", wWidth, wHeight);
-        //    Menus menu = new Menus();
-        //    menu.MainMenu(self);
+            Menus menu = new Menus();
+            menu.MainMenu(self);
 
         //    menu.TravelPlanetPrompt(self, ProximaB);
 

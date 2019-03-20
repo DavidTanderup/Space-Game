@@ -11,7 +11,7 @@ namespace SpaceCadets
     {
         public void MainMenu(Characters self)
         {
-            Console.WriteLine($"You are {self.Age} years old");
+            Console.WriteLine($"You are {self.Age} years old at the planet {self.location.PlanetName}");
             Console.WriteLine("T- Travel, S-Trade, M-Mine");
             while (true)
             {
@@ -97,6 +97,7 @@ namespace SpaceCadets
                     switch(option.Key)
                     {
                         case ConsoleKey.Y:
+                            self.location = toPlanet;
                             game.MovementMain(self, distanceToPlanet, selectedSpeed);
                             valid = false;
                             break;
