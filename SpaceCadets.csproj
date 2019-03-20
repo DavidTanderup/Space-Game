@@ -50,6 +50,7 @@
     <Compile Include="GraphicsMove.cs" />
     <Compile Include="MarketPlace.cs" />
     <Compile Include="Menu.cs" />
+    <Compile Include="MoonMarket.cs" />
     <Compile Include="Planets.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProgramMap.cs" />

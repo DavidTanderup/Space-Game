@@ -23,10 +23,17 @@ namespace ConsoleApp4
             //basic
         }
 
-        public double TravelTime(double WarpSpeed, double DistanceLY)
+        public double TravelTime(double WarpFactor, double DistanceLY)
         {
-            return DistanceLY / WarpSpeed; //This is time in years
+            return DistanceLY / WarpSpeed(WarpFactor); //This is time in years
         }
+
+        
+        //public ItemValue(SpaceCadets.Characters self, item item)
+        //{
+        //    double Distance = Dist2Points(self.location.PlanetCoordinate, item.HomePlanet.PlanetCoordinate);
+        //    return item.value * 1(+ .1 * Distance);
+        //}
 
     }
 }

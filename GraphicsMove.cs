@@ -116,6 +116,7 @@ namespace ConsoleApp4
                 Formulas form = new Formulas();
                 SpaceCadets.Menus menu = new SpaceCadets.Menus();
                 double tripTime = Distance / form.WarpSpeed(Speed);
+                self.mySpaceShip.fuel.weight -= Distance * 100;
                 self.Age += tripTime;
                 menu.MainMenu(self);
 
