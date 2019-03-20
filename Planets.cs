@@ -19,7 +19,7 @@ namespace SpaceCadets
 
         /// <summary>
         /// Planet size is based on Earth Scale. Earth = 1
-        /// </summary>
+        /// </summary> 
         public List<Planet> PlanetSystem()
         {
             List<Planet> Galaxy = new List<Planet>()

@@ -9,12 +9,13 @@ namespace SpaceCadets
 {
     class Characters
     {
-        public string name ;
+        public string name;
         public double money;
         public double Age;
         public Planet location;
         public SpaceShip mySpaceShip = new SpaceShip();
         public bool Alive;
+        //public List<(item item, double quantity)> inventory;
         public List<(string item, double quantity)> inventory;
         
         //skills
@@ -29,7 +30,6 @@ namespace SpaceCadets
             this.name = name;
             this.mySpaceShip = mySpaceShip;
             this.Alive = Alive;
-
 
 
 

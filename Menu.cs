@@ -11,7 +11,10 @@ namespace SpaceCadets
     {
         public void MainMenu(Characters self)
         {
+            Console.Clear();
+            Console.SetCursorPosition(0, 0);
             Console.WriteLine($"You are {self.Age} years old at the planet {self.location.PlanetName}");
+            Console.WriteLine($"You've got about {self.mySpaceShip.fuel.weight/100} LY of fuel.");
             Console.WriteLine("T- Travel, S-Trade, M-Mine");
             while (true)
             {
@@ -79,11 +82,11 @@ namespace SpaceCadets
         {
             Formulas form = new Formulas();
             double distanceToPlanet = form.Dist2Points(self.location.PlanetCoordinate, toPlanet.PlanetCoordinate);
-            Console.WriteLine($"Your max speed is {form.WarpSpeed(self.mySpaceShip.speed)}");
-            Console.WriteLine($"Please enter a speed between zero and {self.mySpaceShip.speed}");
+            Console.WriteLine($"Your max speed is {form.WarpSpeed(self.mySpaceShip.engines.speed)}");
+            Console.WriteLine($"Please enter a speed between zero and {self.mySpaceShip.engines.speed}");
             bool isValidSpeed = double.TryParse(Console.ReadLine(), out double selectedSpeed);
 
-            if(isValidSpeed && selectedSpeed>0 && selectedSpeed <= self.mySpaceShip.speed)
+            if(isValidSpeed && selectedSpeed>0 && selectedSpeed <= self.mySpaceShip.engines.speed)
             {
 
                 Console.WriteLine($"Your trip to {toPlanet.PlanetName} will take approximately {form.TravelTime(selectedSpeed, distanceToPlanet)} years\nDo you accept?");
