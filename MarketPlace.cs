@@ -5,7 +5,7 @@
 //using System.Threading.Tasks;
 //using System.Threading;
 
-//namespace SpaceCadets
+//namespace SomethingRandom
 //{
 //    class MarketPlace
 //    {
@@ -18,19 +18,17 @@
 //            Console.WriteLine("=====================================================");
 //            Console.WriteLine("=====================================================\n\n");
 //        }
-//        public void ChoiceMenu()
+//        public void ChoiceMenuHeader()
 //        {
 //            Greeting();
 //            Console.ForegroundColor = ConsoleColor.Green;
 //            Console.WriteLine("\tYou can do one of four things:\n" +
-//                              "\n\t1) Buy Something" +
-//                              "\n\t2) Sell Something" +
-//                              "\n\t3) Stand around and be awkward" +
-//                              "\n\t4) Leave -- although technically you aren't doing that HERE, ");
+//                              "\n\t1) Inventory" +
+//                              "\n\t2) Stand around and be awkward" +
+//                              "\n\t3) Leave -- although technically you aren't doing that HERE, ");
 //            Console.WriteLine("\t            it's more of a transitory process that begins here,");
 //            Console.WriteLine("\t            but if you do choose that option know that we are excited");
 //            Console.WriteLine("\t            excited to be the start of that new journey in your life.");
-
 //            Console.ForegroundColor = ConsoleColor.DarkCyan;
 //            Console.Write("\nOh mighty Space Trader please honor us with your selection: ");
 
@@ -40,40 +38,48 @@
 
 
 
-//        private void BuyChoiceSelection(Characters self, MarketResources inventory, int i)
+//        public void BuyChoiceSelection(Characters self, List<(MarketResources, int)> itemAndQuantity, int userSelection)
 //        {
 //            ConsoleKeyInfo userInput = Console.ReadKey();
 //            switch (userInput.Key)
 //            {
 //                case ConsoleKey.D1:
+//                    buyOptions(self, itemAndQuantity, userSelection); //fix this
 //                    Console.Clear();
 //                    Console.Write("Enter Qty to purchase: \n");
 //                    int qtyToPurchase = Console.Read();
-//                    double price = qtyToPurchase * sell[i].Item3;
+//                    double price = qtyToPurchase * itemAndQuantity[userSelection].Item1.Price; //add error if quantity exceeds stock
 //                    Console.WriteLine($"That will cost {price:C}");
 //                    Console.WriteLine("Do you wish to complete the purchase?\n");
 //                    Console.WriteLine("1) Yes");/// update bank account and inventory
 //                    Console.WriteLine("2) No"); /// leave
 //                    break;
+
+//                case ConsoleKey.D1:
+
+
+
+
 //                case ConsoleKey.NumPad1:
-//                    buyOptions(self, inventory, i);
+//                    buyOptions(self, itemAndQuantity, userSelection);
 
 //                    Console.Clear();
 //                    Console.Write("Enter Qty to purchase: \n");
-//                    int qtyToPurchase_ = Console.Read();
-//                    double price_ = qtyToPurchase_ * sell[i].Item3;
-//                    Console.WriteLine($"That will cost {price_:C}");
+//                    int qtyToPurchaseNumPad = Console.Read();
+//                    double priceNumPad = qtyToPurchaseNumPad * itemAndQuantity.Item1.Price; //add error if quantity exceeds stock
+//                    Console.WriteLine($"That will cost {priceNumPad:C}");
 //                    Console.WriteLine("Do you wish to complete the purchase?\n");
 //                    Console.WriteLine("1) Yes");/// update bank account and inventory
 //                    Console.WriteLine("2) No"); /// leave
+
 //                    ConsoleKeyInfo option;
 //                    option = Console.ReadKey();
 //                    switch (option.Key)
 //                    {
 //                        case ConsoleKey.Y:
-//                            if (price_ <= self.money)
-//                                self.money -= price_;
-//                            self.inventory.Add(item, qtyToPurchase_)
+//                            if (price <= self.money)
+//                                self.money -= price;
+//                            self.inventory.Add(itemAndQuantity);
 //                            //self.inventory += itemquantity
 //                            break;
 
@@ -95,7 +101,8 @@
 //        /// TODO: Update account and Inventory
 //        /// </summary>
 //        /// <param name="sell"></param>
-//        private void BuyItemsMenu(List<Tuple<string, int, double>> buy)
+//        private void BuyItemsMenu(Characters self, List<(MarketResources, int)> buy)
+//        //private void BuyItemsMenu(List<Tuple<string, int, double>> buy)
 //        {
 //            int i = 0;
 //            ConsoleKeyInfo userInput = Console.ReadKey();
@@ -103,68 +110,75 @@
 //            {
 //                case ConsoleKey.D1:
 //                    Console.Clear();
-//                    Console.WriteLine($"Item: {buy[0].Item1} || Quantity: {buy[0].Item2} || Price: {buy[0].Item3}\n");
+//                    Console.WriteLine($"Item: {buy[0].Item1.Name} || Quantity: {buy[0].Item2} || Price: {buy[0].Item1.Price}\n");
 //                    Console.WriteLine("1) Purchase");
 //                    Console.WriteLine("2) Leave");
 //                    i = 1;
-//                    BuyChoiceSelection(buy, i);
+//                    BuyChoiceSelection(self, buy, i);
 //                    break;
+
 //                case ConsoleKey.NumPad1:
 //                    Console.Clear();
-//                    Console.WriteLine($"Item: {buy[0].Item1} || Quantity: {buy[0].Item2} || Price: {buy[0].Item3}\n");
+//                    Console.WriteLine($"Item: {buy[0].Item1.Name} || Quantity: {buy[0].Item2} || Price: {buy[0].Item1.Price}\n");
 //                    Console.WriteLine("1) Purchase");
-//                    Console.WriteLine("2) Leave [Escape]");
+//                    Console.WriteLine("2) Leave");
 //                    i = 1;
-//                    BuyChoiceSelection(buy, i);
+//                    BuyChoiceSelection(self, buy, i);
 //                    break;
+
 //                case ConsoleKey.D2:
 //                    Console.Clear();
-//                    Console.WriteLine($"Item: {buy[1].Item1} || Quantity: {buy[1].Item2} || Price: {buy[1].Item3}\n");
+//                    Console.WriteLine($"Item: {buy[1].Item1.Name} || Quantity: {buy[1].Item2} || Price: {buy[1].Item1.Price}\n");
 //                    Console.WriteLine("1) Purchase");
 //                    Console.WriteLine("2) Leave");
 //                    i = 2;
-//                    BuyChoiceSelection(buy, i);
+//                    BuyChoiceSelection(self, buy, i);
 //                    break;
+
 //                case ConsoleKey.NumPad2:
 //                    Console.Clear();
-//                    Console.WriteLine($"Item: {buy[1].Item1} || Quantity: {buy[1].Item2} || Price: {buy[1].Item3}\n");
+//                    Console.WriteLine($"Item: {buy[1].Item1.Name} || Quantity: {buy[1].Item2} || Price: {buy[1].Item1.Price}\n");
 //                    Console.WriteLine("1) Purchase");
-//                    Console.WriteLine("2) Leave [Escape]");
+//                    Console.WriteLine("2) Leave");
 //                    i = 2;
-//                    BuyChoiceSelection(buy, i);
+//                    BuyChoiceSelection(self, buy, i);
 //                    break;
 //                case ConsoleKey.D3:
 //                    Console.Clear();
-//                    Console.WriteLine($"Item: {buy[2].Item1} || Quantity: {buy[2].Item2} || Price: {buy[2].Item3}\n");
+//                    Console.WriteLine($"Item: {buy[2].Item1.Name} || Quantity: {buy[2].Item2} || Price: {buy[2].Item1.Price}\n");
 //                    Console.WriteLine("1) Purchase");
 //                    Console.WriteLine("2) Leave");
 //                    i = 3;
-//                    BuyChoiceSelection(buy, i);
+//                    BuyChoiceSelection(self, buy, i);
 //                    break;
+
 //                case ConsoleKey.NumPad3:
 //                    Console.Clear();
-//                    Console.WriteLine($"Item: {buy[3].Item1} || Quantity: {buy[3].Item2} || Price: {buy[3].Item3}\n");
+//                    Console.WriteLine($"Item: {buy[2].Item1.Name} || Quantity: {buy[2].Item2} || Price: {buy[2].Item1.Price}\n");
 //                    Console.WriteLine("1) Purchase");
-//                    Console.WriteLine("2) Leave [Escape]");
+//                    Console.WriteLine("2) Leave");
 //                    i = 3;
-//                    BuyChoiceSelection(buy, i);
+//                    BuyChoiceSelection(self, buy, i);
 //                    break;
+
 //                case ConsoleKey.D4:
 //                    Console.Clear();
-//                    Console.WriteLine($"Item: {buy[0].Item1} || Quantity: {buy[0].Item2} || Price: {buy[0].Item3}\n");
+//                    Console.WriteLine($"Item: {buy[3].Item1.Name} || Quantity: {buy[3].Item2} || Price: {buy[3].Item1.Price}\n");
 //                    Console.WriteLine("1) Purchase");
 //                    Console.WriteLine("2) Leave");
 //                    i = 4;
-//                    BuyChoiceSelection(buy, i);
+//                    BuyChoiceSelection(self, buy, i);
 //                    break;
+
 //                case ConsoleKey.NumPad4:
 //                    Console.Clear();
-//                    Console.WriteLine($"Item: {buy[0].Item1} || Quantity: {buy[0].Item2} || Price: {buy[0].Item3}\n");
+//                    Console.WriteLine($"Item: {buy[3].Item1.Name} || Quantity: {buy[3].Item2} || Price: {buy[3].Item1.Price}\n");
 //                    Console.WriteLine("1) Purchase");
-//                    Console.WriteLine("2) Leave [Escape]");
+//                    Console.WriteLine("2) Leave");
 //                    i = 4;
-//                    BuyChoiceSelection(buy, i);
+//                    BuyChoiceSelection(self, buy, i);
 //                    break;
+
 //                case ConsoleKey.Escape:
 //                    break;
 //            }
@@ -197,7 +211,7 @@
 //            {
 //                if (buySell.ToLower() == "sell")
 //                {
-//                    Console.WriteLine($"Item: {marketDisplay[i].Name} || Quantity: {marketDisplay[i].Quantity} || Price {(marketDisplay[i].Price) * .75:C}");
+//                    Console.WriteLine($"Item: {marketDisplay[i].Name} || Quantity: {marketDisplay[i].} || Price {(marketDisplay[i].Price) * .75:C}");
 
 //                }
 //                else if (buySell.ToLower() != "sell")
@@ -215,14 +229,14 @@
 //            Console.Clear();
 //            bool stillHere = true;
 
-//            ChoiceMenu();
+//            ChoiceMenuHeader();
 
 //            while (stillHere)
 //            {
 
 //                ConsoleKeyInfo userInput = Console.ReadKey();
 //                Console.Clear();
-//                ChoiceMenu();
+//                ChoiceMenuHeader();
 
 //                switch (userInput.Key)
 //                {

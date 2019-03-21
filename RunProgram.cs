@@ -15,17 +15,28 @@ namespace SpaceCadets
         {
             Planet planet = new Planet();
             var planetList = planet.PlanetSystem();
-            Ships.SpaceShip spaceShip = new Ships.SpaceShip();
-            Characters PlayerOne = new Characters(5000, 20, planetList[1], "Bob",spaceShip, true);
+            MarketResources zeroitem = new MarketResources();
+
+            (MarketResources, int) zeroethitem = (zeroitem, 0);
+
+            List<(MarketResources, int)> inventory = new List<(MarketResources, int)> { };
+            inventory.Add(zeroethitem);
+
+            SpaceShip spaceShip = new SpaceShip();
+            Characters PlayerOne = new Characters(5000, 20, planetList[1], "Bob",spaceShip, true, inventory);
 
             MarketPlace marketPlace = new MarketPlace();
             Console.SetCursorPosition(Console.LargestWindowWidth / 2, 5);
-            PrettyColors();// 
+            MarketResources thing = new MarketResources();
+            var list = thing.MarketGenerate(PlayerOne);
+           // PrettyColors();// 
             Console.Clear();
-            PlayerInfo();
-            SoloShipShopIntro(PlayerOne);
+           // PlayerInfo();
+           // SoloShipShopIntro(PlayerOne);
+            
             /// insert information co
-            marketPlace.InTheMarketPlace();
+            
+            marketPlace.InTheMarketPlace(PlayerOne, list);
         }
 
         private List<string> StarTader()

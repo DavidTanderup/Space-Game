@@ -33,6 +33,7 @@ namespace SpaceCadets
 
                         case ConsoleKey.S:
                             Console.WriteLine("trade");
+
                             break;
 
                         case ConsoleKey.M:

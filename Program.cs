@@ -21,7 +21,7 @@ namespace SpaceCadets
             var planetList = planet.PlanetSystem();
             SpaceShip spaceShip = new SpaceShip();
             SpaceShip mySpace = new SpaceShip(spaceShip.Engine1,spaceShip.Fuel1,spaceShip.Cargo1);
-            Characters PlayerOne = new Characters(5000, 20, planetList[1], "Bob",mySpace , true);
+           // Characters PlayerOne = new Characters(5000, 20, planetList[1], "Bob",mySpace , true, );
             RunProgram runProgram = new RunProgram();
             runProgram.Run();
             Console.ReadLine();
@@ -56,7 +56,7 @@ namespace SpaceCadets
             ////    //marketPlace.Greeting();
             ////    //marketPlace.ChoiceMenu();
 
-            Planet planet = new Planet();
+            Planet planette = new Planet();
             var ListofPlanets = planet.PlanetSystem();
             var Earth = ListofPlanets[0];
             //    var ProximaB = ListofPlanets[2];
@@ -71,15 +71,15 @@ namespace SpaceCadets
             SpaceShip mySpaceShip = new SpaceShip(myEngine, myFuel, myCargo);
 
             //    Formulas form = new Formulas();
-            Characters self = new Characters(5000, 12, Earth, name, mySpaceShip, true);
+            //Characters self = new Characters(5000, 12, Earth, name, mySpaceShip, true);
             //    ////SpaceShip mySpaceShip = new SpaceShip(myEngine, myFuel, myCargo);
-            MarketResources thing = new MarketResources();
-            var list = thing.MarketGenerate(self);
+            //MarketResources thing = new MarketResources();
+            //var list = thing.MarketGenerate(self);
 
-            foreach ((MarketResources, int) element in list)
-            {
-                Console.WriteLine($"{element.Item1.Name} has {element.Item2} units available worth {element.Item1.Price} each");
-            }
+            //foreach ((MarketResources, int) element in list)
+            //{
+            //    Console.WriteLine($"{element.Item1.Name} has {element.Item2} units available worth {element.Item1.Price} each");
+            //}
 
             //    //    ////string SpaceShipRep = mySpaceShip.Engine3.rep + mySpaceShip.Fuel3.rep + mySpaceShip.Cargo3.rep + mySpaceShip.nose;
 

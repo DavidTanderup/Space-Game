@@ -4,15 +4,6 @@ using System.Timers;
 using System.Diagnostics;
 
 
-//public class Resources
-//{
-//    public string Name { get; set; }
-//    public double Weight { get; set; }
-//    public double Value { get; set; }
-//    public int Size { get; set; }
-
-//}
-
 namespace SpaceCadets
 {
 
