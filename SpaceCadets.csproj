@@ -56,6 +56,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="ProgramMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RunProgram.cs" />
     <Compile Include="SaveAndLoadGame.cs" />
     <Compile Include="SpaceShip.cs" />
   </ItemGroup>

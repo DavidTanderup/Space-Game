@@ -30,6 +30,7 @@ namespace SpaceCadets
             this.name = name;
             this.mySpaceShip = mySpaceShip;
             this.Alive = Alive;
+            
 
 
 
