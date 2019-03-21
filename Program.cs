@@ -20,6 +20,11 @@ namespace ConsoleApp4
 
         static void Main(string[] args)
         {
+            Planet planet = new Planet();
+            var planetList = planet.PlanetSystem();
+            SpaceShip spaceShip = new SpaceShip();
+            SpaceShip mySpace = new SpaceShip(spaceShip.Engine1,spaceShip.Fuel1,spaceShip.Cargo1);
+            Characters PlayerOne = new Characters(5000, 20, planetList[1], "Bob",mySpace , true);
             RunProgram runProgram = new RunProgram();
             runProgram.Run();
             Console.ReadLine();

@@ -10,13 +10,21 @@ namespace SpaceCadets
 {
     class RunProgram
     {
+
         public void Run()
         {
+            Planet planet = new Planet();
+            var planetList = planet.PlanetSystem();
+            Ships.SpaceShip spaceShip = new Ships.SpaceShip();
+            Characters PlayerOne = new Characters(5000, 20, planetList[1], "Bob",spaceShip, true);
+
             MarketPlace marketPlace = new MarketPlace();
             Console.SetCursorPosition(Console.LargestWindowWidth / 2, 5);
-            PrettyColors();
+            PrettyColors();// 
             Console.Clear();
             PlayerInfo();
+            SoloShipShopIntro(PlayerOne);
+            /// insert information co
             marketPlace.InTheMarketPlace();
         }
 
@@ -36,7 +44,7 @@ namespace SpaceCadets
 
         private static System.Timers.Timer aTimer;
 
-        private void Timer ()
+        private void Timer()
         {
             // Create a timer with a two second interval.
             aTimer = new System.Timers.Timer(1000);
@@ -59,7 +67,7 @@ namespace SpaceCadets
 
         private void TimedEvent(Object source, ElapsedEventArgs e)
         {
-            Console.WriteLine("",e);
+            Console.WriteLine("", e);
             Console.ForegroundColor = ConsoleColor.Red;
             Logo();
             Thread.Sleep(1200);
@@ -70,12 +78,12 @@ namespace SpaceCadets
 
             Console.ForegroundColor = ConsoleColor.Blue;
             Logo();
-                       
+
         }
 
         private void Logo()
         {
-            
+
             var logo = StarTader();
             Console.Clear();
             Console.SetCursorPosition((Console.LargestWindowWidth / 2) - (logo[2].Length / 2), 5);
@@ -92,6 +100,9 @@ namespace SpaceCadets
             Console.WriteLine("\n\n\n\n                                                                                        Press Enter to Continue");
         }
 
+        /// <summary>
+        /// TODO: add player information collection
+        /// </summary>
         public void PlayerInfo()
         {
             Console.Clear();
@@ -153,9 +164,144 @@ namespace SpaceCadets
 
         }
 
+        public void SoloShipShop(Characters self)
+        {
+            MoonMarket moonMarket = new MoonMarket();
+            Dialogue dialogue = new Dialogue();
 
 
+
+
+            dialogue.ShipShopIntro_EverTimeAfter();
+
+            /// TODO: create the standard solo interface
+
+        }
+
+        public void SoloShipShopIntro(Characters self)
+        {
+            MoonMarket moonMarket = new MoonMarket();
+            Dialogue dialogue = new Dialogue();
+            SoloTitle();
+            dialogue.S3_JanetIntro();
+            Thread.Sleep(2000);
+            bool stillHere = true; /// while the player is in the ship market
+            while (stillHere)
+            {
+
+                Console.Clear();
+                SoloTitle();
+                dialogue.ShipShopIntro_First();
+
+                ConsoleKeyInfo userInput = Console.ReadKey();
+                switch (userInput.Key)
+                {
+                    case ConsoleKey.D1:
+                        //moonMarket.moonMarketMenu(self);
+                        Console.Clear();
+                        Console.WriteLine("You bought a ship!!");
+                        Console.ReadLine();
+                        stillHere = true;
+                        break;
+                    case ConsoleKey.NumPad1:
+                        Console.Clear();
+                        Console.WriteLine("You bought a ship!!");
+                        //moonMarket.moonMarketMenu(self);
+                        Console.ReadLine();
+                        stillHere = true;
+                        break;
+                    case ConsoleKey.D2:
+                        stillHere = true;
+                        Console.Clear();
+                        Console.ReadLine();
+                        Console.WriteLine("tell a sweet story"); /// create dialogue
+                        break;
+                    case ConsoleKey.NumPad2:
+                        stillHere = true;
+                        Console.Clear();
+                        Console.WriteLine("tell a sweet story"); /// create dialogue
+                        Console.ReadLine();
+                        break;
+                    case ConsoleKey.Escape:
+                        Console.Clear();
+                        Console.WriteLine("\t\t\n\nYou have left Solo's Ship Shop #spaceboats");
+                        Console.ReadLine();
+                        stillHere = false;
+                        break;
+
+                }
+            }
+
+
+
+        }
+
+        private void SoloTitle()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("\t\tSOLO SHIP SHOP [Location: Moon]");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\t\t===============================");
+            Console.WriteLine("\t\t\n\n");
+        }
 
 
     }
+    public class Dialogue
+    {
+        public void S3_JanetIntro()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\t\tThe shop is a dusty old relic that has seen better days, but since it's the only game in town it looks like you are stuck here.\n");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Thread.Sleep(3500);
+            Console.WriteLine("\t\t[Janet] You've seen better days too, but you don't see anyone complaining about a cantankerous " +
+                                   "battle droid that has been relegated to running a two bit video game\n");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Thread.Sleep(2500);
+            Console.WriteLine("\t\t....");
+            Thread.Sleep(2500);
+            Console.WriteLine("\t\t....");
+            Thread.Sleep(2500);
+            Console.WriteLine("\t\t....");
+            Thread.Sleep(2500);
+            Console.WriteLine("\t\tAre you done?\n");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Thread.Sleep(2500);
+            Console.WriteLine("\t\t[Janet] Yes, I'm sorry you were doing very well. I'm just very excited someone is playing your game.");
+            Thread.Sleep(2500);
+        }
+        public void ShipShopIntro_First()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\t\tWalking into the prestigious shop of the famed trader and part time Hero Hans Solo, you see the seasoned gentleman leaning on the counter.");
+            Thread.Sleep(2500);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\n\t\tWelcome friend what can I do for you today?");
+            Thread.Sleep(1500);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("\n\t\t1) I'd like to buy a ship");
+            Console.WriteLine("\n\t\t2) What's all the commotion going on outside?");
+            Console.WriteLine("\n\n\t\tExit [Escape Key]");
+        }
+
+        public void ShipShopIntro_EverTimeAfter()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\t\tWalking into the prestigious shop of the famed trader and part time Hero Hans Solo, you see the seasoned gentleman leaning on the counter.");
+            Thread.Sleep(2500);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\n\t\tWelcome friend what can I do for you today?");
+            Thread.Sleep(1500);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("\n\t\t1) I'd like to upgrade a ship");
+            Console.WriteLine("\n\t\t2) What's all the commotion going on outside?");
+            Console.WriteLine("\n\n\t\tExit [Escape Key]");
+        }
+
+    }
+
+
+
+
 }
