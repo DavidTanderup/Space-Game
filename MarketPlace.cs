@@ -189,7 +189,7 @@ namespace SpaceCadets
 
         public void InTheMarketPlace()
         {
-
+            Console.Clear();
             bool stillHere = true;
 
             ChoiceMenu();

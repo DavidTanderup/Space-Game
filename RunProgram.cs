@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Timers;
 
 namespace SpaceCadets
 {
@@ -11,10 +12,11 @@ namespace SpaceCadets
     {
         public void Run()
         {
-            Console.SetCursorPosition(Console.LargestWindowWidth / 2, 5);
-            GameWelcome();
-            PlayerInfo();
             MarketPlace marketPlace = new MarketPlace();
+            Console.SetCursorPosition(Console.LargestWindowWidth / 2, 5);
+            PrettyColors();
+            Console.Clear();
+            PlayerInfo();
             marketPlace.InTheMarketPlace();
         }
 
@@ -31,96 +33,106 @@ namespace SpaceCadets
             return welcome;
 
         }
-        public void GameWelcome()
+
+        private static System.Timers.Timer aTimer;
+
+        private void Timer ()
         {
+            // Create a timer with a two second interval.
+            aTimer = new System.Timers.Timer(1000);
+            // Hook up the Elapsed event for the timer. 
+            aTimer.Elapsed += TimedEvent;
+            aTimer.AutoReset = true;
+            aTimer.Enabled = true;
+
+        }
+
+        public void PrettyColors()
+        {
+            Timer();
+
+            Console.ReadLine();
+            aTimer.Stop();
+            aTimer.Dispose();
+            Console.Clear();
+        }
+
+        private void TimedEvent(Object source, ElapsedEventArgs e)
+        {
+            Console.WriteLine("",e);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Logo();
             Thread.Sleep(1200);
-            var title = StarTader();
-            int counter = 4;
-            int i = 5;
-            int j = 0;
-            while (counter>= 0)
-            {
 
-                for (j = 0; j < 5; j++)
-                {
-                    Console.SetCursorPosition((Console.LargestWindowWidth / 2) - (title[2].Length / 2), i);
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine(title[j]);
-                    i++;
-                }
-                i = 5;
-                Thread.Sleep(1200);
-                Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            Logo();
+            Thread.Sleep(1200);
 
-                for (j = 0; j < 5; j++)
-                {
-                    Console.SetCursorPosition((Console.LargestWindowWidth / 2) - (title[2].Length / 2), i);
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine(title[j]);
-                    i++;
-                }
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Logo();
+                       
+        }
 
-                i = 5;
-                Thread.Sleep(1200);
-                Console.Clear();
-
-                for (j = 0; j < 5; j++)
-                {
-                    Console.SetCursorPosition((Console.LargestWindowWidth / 2) - (title[2].Length / 2), i);
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine(title[j]);
-                    i++;
-                }
-               
-                i = 5;
-                Thread.Sleep(1200);
-                Console.Clear();
-
-                counter--;
-
-            }
-
-
+        private void Logo()
+        {
+            
+            var logo = StarTader();
+            Console.Clear();
+            Console.SetCursorPosition((Console.LargestWindowWidth / 2) - (logo[2].Length / 2), 5);
+            Console.WriteLine(logo[0]);
+            Console.SetCursorPosition((Console.LargestWindowWidth / 2) - (logo[2].Length / 2), 6);
+            Console.WriteLine(logo[1]);
+            Console.SetCursorPosition((Console.LargestWindowWidth / 2) - (logo[2].Length / 2), 7);
+            Console.WriteLine(logo[2]);
+            Console.SetCursorPosition((Console.LargestWindowWidth / 2) - (logo[2].Length / 2), 8);
+            Console.WriteLine(logo[3]);
+            Console.SetCursorPosition((Console.LargestWindowWidth / 2) - (logo[2].Length / 2), 9);
+            Console.WriteLine(logo[4]);
+            Console.SetCursorPosition((Console.LargestWindowWidth / 2) - (logo[2].Length / 2), 12);
+            Console.WriteLine("\n\n\n\n                                                                                        Press Enter to Continue");
         }
 
         public void PlayerInfo()
         {
-            Console.WriteLine("Welcome to Space Trader");
-            Console.WriteLine("=======================");
-            Console.WriteLine("\nA Game where the points are made up and the rules don't matter.");
-            Thread.Sleep(3000);
-            Console.WriteLine("\n[Janet] 'Unless you die'");
-            Thread.Sleep(1500);
-            Console.WriteLine("\nThanks Janet...yes unless you die or you play games to win, in which case I wouldn't play this game,\n" +
-                              "because you will not win. Ever");
-            Thread.Sleep(3500);
-            Console.WriteLine("\n[Janet] 'Unless they do'");
-            Thread.Sleep(1700);
-            Console.WriteLine("\nObviously...");
-            Thread.Sleep(1250);
-            Console.WriteLine("Waiting for another cheeky remark from Janet?");
-            Thread.Sleep(1400);
-            Console.WriteLine("I have a riddle for you");
+            Console.Clear();
+            Thread.Sleep(4000);
+            Console.WriteLine("\t\tWelcome to Space Trader");
+            Console.WriteLine("\t\t=======================");
+            Console.WriteLine("\t\t\nA Game where the points are made up and the rules don't matter.");
+            Thread.Sleep(4000);
+            Console.WriteLine("\t\t\n[Janet] 'Unless you die'");
+            Thread.Sleep(2500);
+            Console.WriteLine("\t\t\nThanks Janet...yes unless you die or you play games to win, in which case I wouldn't play this game,\n" +
+                              "\t\tbecause you will not win. Ever");
+            Thread.Sleep(4500);
+            Console.WriteLine("\t\t\n[Janet] 'Unless they do'");
+            Thread.Sleep(2700);
+            Console.WriteLine("\t\t\nObviously...");
+            Thread.Sleep(2250);
+            Console.WriteLine("\t\tWaiting for another cheeky remark from Janet?");
+            Thread.Sleep(2400);
+            Console.WriteLine("\t\tI have a riddle for you");
 
             bool pete = true;
             while (pete)
             {
                 Console.Clear();
-                Console.WriteLine("Pete and Repeat were on a boat Pete fell off. Who was left?\n");
-                Console.WriteLine("1)Pete");
-                Console.WriteLine("2)Repeat");
+                Console.WriteLine("\n\n\t\tPete and Repeat were on a boat Pete fell off. Who was left?\n");
+                Console.WriteLine("\t\t1)Pete");
+                Console.WriteLine("\t\t2)Repeat");
                 ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
                 switch (consoleKeyInfo.Key)
                 {
                     case ConsoleKey.D1:
-                        Console.WriteLine("You are truly boring");
-                        Console.WriteLine("[Janet] 'That was a smart choice dear'");
+                        Console.WriteLine("\t\tYou are truly boring");
+                        Console.WriteLine("\t\t[Janet] 'That was a smart choice dear'");
+                        Thread.Sleep(2000);
                         pete = false;
                         break;
                     case ConsoleKey.NumPad1:
-                        Console.WriteLine("You are truly boring");
-                        Console.WriteLine("[Janet] 'That was a smart choice dear'");
-                        
+                        Console.WriteLine("\t\tYou are truly boring");
+                        Console.WriteLine("\t\t[Janet] 'That was a smart choice dear'");
+                        Thread.Sleep(2000);
                         pete = false;
                         break;
                     case ConsoleKey.D2:
@@ -140,6 +152,7 @@ namespace SpaceCadets
             }
 
         }
+
 
 
 
