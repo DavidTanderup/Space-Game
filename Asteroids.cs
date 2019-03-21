@@ -5,15 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 
-namespace ConsoleApp4
+namespace SpaceCadets
 {
 
-    class Coordinate
-    {
+    //class Coordinate
+    //{
 
-        public int X { get; set; } //Left
-        public int Y { get; set; } //Top
-    }
+    //    public int X { get; set; } //Left
+    //    public int Y { get; set; } //Top
+    //}
 
     class Asteroids
     {

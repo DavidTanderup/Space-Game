@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ConsoleApp4;
 
 namespace SpaceCadets
 {
@@ -11,10 +10,13 @@ namespace SpaceCadets
     {
         public void MainMenu(Characters self)
         {
+            MarketResources item = new MarketResources();
+            item.MarketGenerate(self);
+            
             Console.Clear();
             Console.SetCursorPosition(0, 0);
             Console.WriteLine($"You are {self.Age} years old at the planet {self.location.PlanetName}");
-            Console.WriteLine($"You've got about {self.mySpaceShip.fuel.weight/100} LY of fuel.");
+            Console.WriteLine($"You've got about {self.mySpaceShip.fuel.weight / 100} LY of fuel.");
             Console.WriteLine("T- Travel, S-Trade, M-Mine");
             while (true)
             {
@@ -41,6 +43,9 @@ namespace SpaceCadets
             }
 
         }
+
+
+
 
         private static void TravelMenu(Characters self)
         {
