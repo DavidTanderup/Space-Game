@@ -17,15 +17,15 @@ namespace SpaceCadets
             Planet planet = new Planet();
             var planetList = planet.PlanetSystem();
             SpaceShip spaceShip = new SpaceShip();
-            SpaceShip mySpace = new SpaceShip(spaceShip.Engine1, spaceShip.Fuel1, spaceShip.Cargo1);
-            Characters PlayerOne = new Characters(5000, 20, planetList[1], "Bob", mySpace, true);
+            //SpaceShip mySpace = new SpaceShip(spaceShip.Engine1, spaceShip.Fuel1, spaceShip.Cargo1);
+            //Characters PlayerOne = new Characters(5000, 20, planetList[1], "Bob", mySpace, true);
 
             MarketPlace marketPlace = new MarketPlace();
-            Console.SetCursorPosition(Console.LargestWindowWidth / 2, 5);
-            PrettyColors();// 
-            Console.Clear();
-            PlayerInfo();
-            SoloShipShopIntro(PlayerOne);
+            //Console.SetCursorPosition(Console.LargestWindowWidth / 2, 5);
+            //PrettyColors();// 
+            //Console.Clear();
+            //PlayerInfo();
+            //SoloShipShopIntro(PlayerOne);
             /// insert information co
             marketPlace.InTheMarketPlace();
         }
@@ -170,15 +170,58 @@ namespace SpaceCadets
         {
             MoonMarket moonMarket = new MoonMarket();
             Dialogue dialogue = new Dialogue();
+            bool stillHere = true; /// while the player is in the ship market
+            while (stillHere)
+            {
+
+                Console.Clear();
+                SoloTitle();
+                dialogue.ShipShopIntro_EverTimeAfter();
+
+                ConsoleKeyInfo userInput = Console.ReadKey();
+                switch (userInput.Key)
+                {
+                    case ConsoleKey.D1:
+                        Console.Clear();
+                        moonMarket.moonMarketMenu(self);
+                        Console.ReadLine();
+                        stillHere = true;
+                        break;
+                    case ConsoleKey.NumPad1:
+                        Console.Clear();
+                        moonMarket.moonMarketMenu(self);
+                        Console.ReadLine();
+                        stillHere = true;
+                        break;
+                    case ConsoleKey.D2:
+                        stillHere = true;
+                        Console.Clear();
+                        dialogue.SolosSweetStory();
+                        Console.ReadLine();
+                        break;
+                    case ConsoleKey.NumPad2:
+                        stillHere = true;
+                        Console.Clear();
+                        dialogue.SolosSweetStory();
+                        Console.ReadLine();
+                        break;
+                    case ConsoleKey.Escape:
+                        Console.Clear();
+                        Console.WriteLine("\t\t\n\nYou have left Solo's Ship Shop #spaceboats");
+                        Console.ReadLine();
+                        stillHere = false;
+                        break;
+
+                }
 
 
 
 
-            dialogue.ShipShopIntro_EverTimeAfter();
-
-            /// TODO: create the standard solo interface
-
+                /// TODO: create the standard solo interface
+            }
         }
+
+
 
         public void SoloShipShopIntro(Characters self)
         {
@@ -199,29 +242,27 @@ namespace SpaceCadets
                 switch (userInput.Key)
                 {
                     case ConsoleKey.D1:
-                        //moonMarket.moonMarketMenu(self);
                         Console.Clear();
-                        Console.WriteLine("You bought a ship!!");
+                        Console.WriteLine("You are now the proud new owner of a:\n");
                         Console.ReadLine();
                         stillHere = true;
                         break;
                     case ConsoleKey.NumPad1:
                         Console.Clear();
                         Console.WriteLine("You bought a ship!!");
-                        //moonMarket.moonMarketMenu(self);
                         Console.ReadLine();
                         stillHere = true;
                         break;
                     case ConsoleKey.D2:
                         stillHere = true;
                         Console.Clear();
+                        dialogue.SolosSweetStory();
                         Console.ReadLine();
-                        Console.WriteLine("tell a sweet story"); /// create dialogue
                         break;
                     case ConsoleKey.NumPad2:
                         stillHere = true;
                         Console.Clear();
-                        Console.WriteLine("tell a sweet story"); /// create dialogue
+                        dialogue.SolosSweetStory();
                         Console.ReadLine();
                         break;
                     case ConsoleKey.Escape:
@@ -249,8 +290,13 @@ namespace SpaceCadets
 
 
     }
+
     public class Dialogue
     {
+        /// <summary>
+        /// The first time through the loop Janet and R2D2 break the fourth wall. This method will only
+        /// play once. 
+        /// </summary>
         public void S3_JanetIntro()
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -273,6 +319,10 @@ namespace SpaceCadets
             Console.WriteLine("\t\t[Janet] Yes, I'm sorry you were doing very well. I'm just very excited someone is playing your game.");
             Thread.Sleep(2500);
         }
+
+        /// <summary>
+        /// The Intro_first is the first time the user visit's solo ship shop.
+        /// </summary>
         public void ShipShopIntro_First()
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -287,6 +337,10 @@ namespace SpaceCadets
             Console.WriteLine("\n\n\t\tExit [Escape Key]");
         }
 
+        /// <summary>
+        /// The intro for Solo's Ship Shop when the user re-visits. The menu selection is changed to upgrade ship and
+        /// selecting that option takes you to the moonmarket upgrade station.
+        /// </summary>
         public void ShipShopIntro_EverTimeAfter()
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -301,9 +355,42 @@ namespace SpaceCadets
             Console.WriteLine("\n\n\t\tExit [Escape Key]");
         }
 
+        /// <summary>
+        /// The story Hans Solo tell when asked whats going on outside.
+        /// </summary>
+        public void SolosSweetStory()
+        {
+            string firstLine = ("The year is 3019 and Earth is celebrating the 100th anniversary of joining");
+            string secondLine = "The Universal Unification of the United Union for the Unequivocal Understanding or U5";
+            string thirdLine = "as we call it here on Earth. It’s a dumb name but we didn’t come up with it.";
+            string fourthLine = "Besides we have been told that the true majesty of the name is lost when translated";
+            string fifthLine = "from the Paladin language. The Paladins are the oldest and most advanced civilization"; 
+            string sixthLine = "in the Galaxy… or so they claim. I mean seriously, it’s easy to say whatever you want";
+            string seventhLine = "when no one can disprove what you say. We learned about 50 years ago that the Paladins";
+            string eighthLine = "merged several time lines to create this one.Alternate realities are common knowledge now,";
+            string ninthLine = "but before we met the U5 thought we were alone in the galaxy and that the Fantasy and";
+            string tenthLine = "Sci - Fi stories and movies were works of imagination.We know now that they are products";
+            string eleventhLine = "of individuals being able to see into another timeline.";
+
+
+            List<string> solosSweetStory = new List<string>() {firstLine,secondLine,thirdLine,fourthLine,
+                                                               fifthLine,sixthLine,seventhLine,eighthLine,
+                                                               ninthLine,tenthLine,eleventhLine };
+            int i = 0; /// The current list line.
+            foreach (var item in solosSweetStory)
+            {
+                Console.SetCursorPosition(Console.LargestWindowWidth / 2, 10 + i);
+                Console.WriteLine(item[i]);
+                Thread.Sleep(1000);
+                i++;
+            }
+            
+        }
     }
 
+   
 
 
 
+   
 }

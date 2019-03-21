@@ -27,6 +27,9 @@ namespace ConsoleApp4
             Characters PlayerOne = new Characters(5000, 20, planetList[1], "Bob",mySpace , true);
             RunProgram runProgram = new RunProgram();
             runProgram.Run();
+
+           
+
             Console.ReadLine();
 
 
