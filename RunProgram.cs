@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Timers;
+using Ships;
 
 namespace SpaceCadets
 {
@@ -15,8 +16,9 @@ namespace SpaceCadets
         {
             Planet planet = new Planet();
             var planetList = planet.PlanetSystem();
-            Ships.SpaceShip spaceShip = new Ships.SpaceShip();
-            Characters PlayerOne = new Characters(5000, 20, planetList[1], "Bob",spaceShip, true);
+            SpaceShip spaceShip = new SpaceShip();
+            SpaceShip mySpace = new SpaceShip(spaceShip.Engine1, spaceShip.Fuel1, spaceShip.Cargo1);
+            Characters PlayerOne = new Characters(5000, 20, planetList[1], "Bob", mySpace, true);
 
             MarketPlace marketPlace = new MarketPlace();
             Console.SetCursorPosition(Console.LargestWindowWidth / 2, 5);
