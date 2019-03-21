@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ships
+namespace SpaceCadets
 {
-    class SpaceShip
+    public class SpaceShip
     {
         public string name;
         public string rep;
@@ -18,8 +18,6 @@ namespace Ships
         public Engines engines;
         public Fuel fuel;
         public Cargo cargobay;
-
-
         public SpaceShip()
         {
             Engines engines = Engine1;
@@ -92,7 +90,7 @@ namespace Ships
         }
     }
 
-    class Fuel
+    public class Fuel
     {
         public string name = "";
         public string rep = "";
@@ -113,7 +111,7 @@ namespace Ships
         }
     }
 
-    class Cargo
+    public class Cargo
     {
         public string name = "";
         public string rep = "";

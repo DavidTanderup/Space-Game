@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ships;
 
 namespace SpaceCadets
 {
-    class Characters
+    public class Characters
     {
         public string name;
         public double money;
@@ -16,7 +15,7 @@ namespace SpaceCadets
         public SpaceShip mySpaceShip = new SpaceShip();
         public bool Alive;
         //public List<(item item, double quantity)> inventory;
-        public List<(string item, double quantity)> inventory;
+        public List<(MarketResources, int)> inventory;
         
         //skills
         //distance traveled
@@ -30,6 +29,7 @@ namespace SpaceCadets
             this.name = name;
             this.mySpaceShip = mySpaceShip;
             this.Alive = Alive;
+
             
 
 

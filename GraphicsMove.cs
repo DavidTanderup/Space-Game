@@ -4,16 +4,16 @@ using System.Timers;
 using System.Diagnostics;
 
 
-public class Resources
-{
-    public string Name { get; set; }
-    public double Weight { get; set; }
-    public double Value { get; set; }
-    public int Size { get; set; }
+//public class Resources
+//{
+//    public string Name { get; set; }
+//    public double Weight { get; set; }
+//    public double Value { get; set; }
+//    public int Size { get; set; }
 
-}
+//}
 
-namespace ConsoleApp4
+namespace SpaceCadets
 {
 
 
@@ -21,12 +21,12 @@ namespace ConsoleApp4
     /// Represents Map Coordinate
     /// </summary>
 
-    //    class Coordinate
-    //    {
+    class Coordinate
+    {
 
-    //    public int X { get; set; } //Left
-    //    public int Y { get; set; } //Top
-    //}
+        public int X { get; set; } //Left
+        public int Y { get; set; } //Top
+    }
 
 
 

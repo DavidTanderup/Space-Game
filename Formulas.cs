@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp4
+namespace SpaceCadets
 {
     class Formulas
     {
@@ -28,12 +28,17 @@ namespace ConsoleApp4
             return DistanceLY / WarpSpeed(WarpFactor); //This is time in years
         }
 
-        
-        //public ItemValue(SpaceCadets.Characters self, item item)
-        //{
-        //    double Distance = Dist2Points(self.location.PlanetCoordinate, item.HomePlanet.PlanetCoordinate);
-        //    return item.value * 1(+ .1 * Distance);
-        //}
+
+        public double ItemValue(SpaceCadets.Characters self, SpaceCadets.MarketResources item)
+        {
+            
+            double Distance = Dist2Points(self.location.PlanetCoordinate, item.Home.PlanetCoordinate);
+            //return item.Price * (1 + .03 * Distance);
+            double value = Math.Round(item.Price * (Math.Pow(1 + .02, Distance)));
+            //double value = item.Price;
+            return value; 
+           
+        }
 
     }
 }

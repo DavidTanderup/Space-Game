@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
-using SpaceCadets;
 //using Graphics;
-using Ships;
 
-
-namespace ConsoleApp4
+namespace SpaceCadets
 {
 
 
@@ -28,6 +25,9 @@ namespace ConsoleApp4
             RunProgram runProgram = new RunProgram();
             runProgram.Run();
             Console.ReadLine();
+
+
+            //Characters self;
 
 
 
@@ -56,23 +56,31 @@ namespace ConsoleApp4
             ////    //marketPlace.Greeting();
             ////    //marketPlace.ChoiceMenu();
 
-            //    Planet planet = new Planet();
-            //    var ListofPlanets = planet.PlanetSystem();
-            //    var Earth = ListofPlanets[0];
-            ////    var ProximaB = ListofPlanets[2];
-            //    string name = "bob";
+            Planet planet = new Planet();
+            var ListofPlanets = planet.PlanetSystem();
+            var Earth = ListofPlanets[0];
+            //    var ProximaB = ListofPlanets[2];
+            string name = "bob";
 
-            //        SpaceShip SpaceShipOptions = new SpaceShip();
+            SpaceShip SpaceShipOptions = new SpaceShip();
 
-            //    Engines myEngine = SpaceShipOptions.Engine1;
-            //    Fuel myFuel = SpaceShipOptions.Fuel1;
-            //    Cargo myCargo = SpaceShipOptions.Cargo1;
+            Engines myEngine = SpaceShipOptions.Engine1;
+            Fuel myFuel = SpaceShipOptions.Fuel1;
+            Cargo myCargo = SpaceShipOptions.Cargo1;
 
-            //    SpaceShip mySpaceShip = new SpaceShip(myEngine, myFuel, myCargo);
+            SpaceShip mySpaceShip = new SpaceShip(myEngine, myFuel, myCargo);
 
-            ////    Formulas form = new Formulas();
-            //    Characters self = new Characters(5000, 12, Earth, name, mySpaceShip, true);
-            //    //    ////SpaceShip mySpaceShip = new SpaceShip(myEngine, myFuel, myCargo);
+            //    Formulas form = new Formulas();
+            Characters self = new Characters(5000, 12, Earth, name, mySpaceShip, true);
+            //    ////SpaceShip mySpaceShip = new SpaceShip(myEngine, myFuel, myCargo);
+            MarketResources thing = new MarketResources();
+            var list = thing.MarketGenerate(self);
+
+            foreach ((MarketResources, int) element in list)
+            {
+                Console.WriteLine($"{element.Item1.Name} has {element.Item2} units available worth {element.Item1.Price} each");
+            }
+
             //    //    ////string SpaceShipRep = mySpaceShip.Engine3.rep + mySpaceShip.Fuel3.rep + mySpaceShip.Cargo3.rep + mySpaceShip.nose;
 
             //    //    ////(double, double) Point1 = (2, 3);
