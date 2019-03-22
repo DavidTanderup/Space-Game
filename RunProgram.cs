@@ -15,14 +15,27 @@ namespace SpaceCadets
         {
             Planet planet = new Planet();
             var planetList = planet.PlanetSystem();
-            MarketResources zeroitem = new MarketResources();
 
-            (MarketResources, int) zeroethitem = (zeroitem, 0);
+            MarketResources MarsBars = new MarketResources(planetList[0], "Mars Bars", 250);
+            MarketResources SunScreen = new MarketResources(planetList[0], "Sun Screen", 1); /// TODO: 42 sold on earth will give $500,000
+            MarketResources MoonPies = new MarketResources(planetList[1], "Moon Pies", 200);
+            MarketResources Honey = new MarketResources(planetList[2], "Honey [sourced by local Proxima Bees]", 500);
+            MarketResources Kryptonite = new MarketResources(planetList[3], "Kryptonite", 15000);
+            MarketResources Widgets = new MarketResources(planetList[4], "Widget", 800);
+            MarketResources BugSpray = new MarketResources(planetList[5], "Bug Spray by K", 486);
+            MarketResources ZombieRepellent = new MarketResources(planetList[6], "Zombie Repellent", 7200);
+            (MarketResources resource, int quantity)[] inventory =
+            {(MarsBars, 0), (SunScreen, 0), (MoonPies, 0), (Honey, 0), (Kryptonite, 0), (Widgets, 0), (BugSpray, 0), (ZombieRepellent, 0)};
 
-            List<(MarketResources, int)> inventory = new List<(MarketResources, int)> { };
-            inventory.Add(zeroethitem);
+            //SpaceShip spaceShip = new SpaceShip();
+            SpaceShip SpaceShipOptions = new SpaceShip();
 
-            SpaceShip spaceShip = new SpaceShip();
+            Engines myEngine = SpaceShipOptions.Engine1;
+            Fuel myFuel = SpaceShipOptions.Fuel1;
+            Cargo myCargo = SpaceShipOptions.Cargo1;
+
+            SpaceShip spaceShip = new SpaceShip(myEngine, myFuel, myCargo);
+
             Characters PlayerOne = new Characters(5000, 20, planetList[1], "Bob",spaceShip, true, inventory);
 
             MarketPlace marketPlace = new MarketPlace();
