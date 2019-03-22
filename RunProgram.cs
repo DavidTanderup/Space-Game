@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Timers;
-using Ships;
+
 
 namespace SpaceCadets
 {
@@ -17,17 +17,15 @@ namespace SpaceCadets
             Planet planet = new Planet();
             var planetList = planet.PlanetSystem();
             SpaceShip spaceShip = new SpaceShip();
-            //SpaceShip mySpace = new SpaceShip(spaceShip.Engine1, spaceShip.Fuel1, spaceShip.Cargo1);
-            //Characters PlayerOne = new Characters(5000, 20, planetList[1], "Bob", mySpace, true);
+            SpaceShip mySpace = new SpaceShip(spaceShip.Engine1, spaceShip.Fuel1, spaceShip.Cargo1);
+            Characters PlayerOne = new Characters(5000, 20, planetList[1], "Bob", mySpace, true);
 
-            MarketPlace marketPlace = new MarketPlace();
-            //Console.SetCursorPosition(Console.LargestWindowWidth / 2, 5);
-            //PrettyColors();// 
-            //Console.Clear();
-            //PlayerInfo();
-            //SoloShipShopIntro(PlayerOne);
+            Console.SetCursorPosition(Console.LargestWindowWidth / 2, 5);
+            PrettyColors();// 
+            Console.Clear();
+            PlayerInfo();
+            SoloShipShopIntro(PlayerOne);
             /// insert information co
-            marketPlace.InTheMarketPlace();
         }
 
         private List<string> StarTader()
@@ -379,9 +377,9 @@ namespace SpaceCadets
             int i = 0; /// The current list line.
             foreach (var item in solosSweetStory)
             {
-                Console.SetCursorPosition(Console.LargestWindowWidth / 2, 10 + i);
-                Console.WriteLine(item[i]);
-                Thread.Sleep(1000);
+                Console.SetCursorPosition(Console.LargestWindowWidth / 2-solosSweetStory[8].Length/2, 10 + i);
+                Console.WriteLine(item);
+                Thread.Sleep(3000);
                 i++;
             }
             

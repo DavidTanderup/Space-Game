@@ -59,7 +59,7 @@ namespace SpaceCadets
             ////    //marketPlace.Greeting();
             ////    //marketPlace.ChoiceMenu();
 
-            Planet planet = new Planet();
+            //Planet planet = new Planet();
             var ListofPlanets = planet.PlanetSystem();
             var Earth = ListofPlanets[0];
             //    var ProximaB = ListofPlanets[2];
