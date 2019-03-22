@@ -67,7 +67,7 @@ namespace SpaceCadets
             var ListofPlanets = planet.PlanetSystem();
             var Earth = ListofPlanets[0];
             //    var ProximaB = ListofPlanets[2];
-            string name = "bob";
+            //string name = "bob";
 
             SpaceShip SpaceShipOptions = new SpaceShip();
 

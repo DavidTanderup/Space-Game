@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Timers;
 
-
 namespace SpaceCadets
 {
     class RunProgram
@@ -16,7 +15,6 @@ namespace SpaceCadets
         {
             Planet planet = new Planet();
             var planetList = planet.PlanetSystem();
-
 
             MarketResources MarsBars = new MarketResources(planetList[0], "Mars Bars", 250);
             MarketResources SunScreen = new MarketResources(planetList[0], "Sun Screen", 1); /// TODO: 42 sold on earth will give $500,000
@@ -32,19 +30,15 @@ namespace SpaceCadets
             //SpaceShip spaceShip = new SpaceShip();
             SpaceShip SpaceShipOptions = new SpaceShip();
 
-            Engines myEngine = SpaceShipOptions.Engine1;
-            Fuel myFuel = SpaceShipOptions.Fuel1;
-            Cargo myCargo = SpaceShipOptions.Cargo1;
+            Engines myEngine = SpaceShipOptions.Engine3;
+            Fuel myFuel = SpaceShipOptions.Fuel3;
+            Cargo myCargo = SpaceShipOptions.Cargo3;
 
             SpaceShip spaceShip = new SpaceShip(myEngine, myFuel, myCargo);
 
             Characters PlayerOne = new Characters(5000, 20, planetList[1], "Bob",spaceShip, true, inventory);
-=======
-            SpaceShip spaceShip = new SpaceShip();
-            SpaceShip mySpace = new SpaceShip(spaceShip.Engine1, spaceShip.Fuel1, spaceShip.Cargo1);
-            Characters PlayerOne = new Characters(5000, 20, planetList[1], "Bob", mySpace, true);
 
-
+            MarketPlace marketPlace = new MarketPlace();
             Console.SetCursorPosition(Console.LargestWindowWidth / 2, 5);
             MarketResources thing = new MarketResources();
             var list = thing.MarketGenerate(PlayerOne);
@@ -54,10 +48,8 @@ namespace SpaceCadets
            // SoloShipShopIntro(PlayerOne);
             
             /// insert information co
-
             
             marketPlace.InTheMarketPlace(PlayerOne, list);
-
         }
 
         private List<string> StarTader()
