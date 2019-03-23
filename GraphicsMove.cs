@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Timers;
 using System.Diagnostics;
-
+using System.Threading;
 
 namespace SpaceCadets
 {
@@ -114,7 +114,8 @@ namespace SpaceCadets
             }
             else if (alive == false)
             {
-                Console.WriteLine("You dead");
+                Console.Clear();
+                YouLostButNotReally();
             }
 
 
@@ -206,6 +207,53 @@ namespace SpaceCadets
             return spaces;
         }
 
+        private static System.Timers.Timer aTimer;
+
+        private void Timer()
+        {
+            // Create a timer with a two second interval.
+            aTimer = new System.Timers.Timer(1000);
+            // Hook up the Elapsed event for the timer. 
+            aTimer.Elapsed += TimedEvent;
+            aTimer.AutoReset = true;
+            aTimer.Enabled = true;
+
+        }
+
+        public void YouLostButNotReally()
+        {
+            Timer();
+
+            Console.ReadLine();
+            aTimer.Stop();
+            aTimer.Dispose();
+            Console.Clear();
+        }
+
+        private void TimedEvent(Object source, ElapsedEventArgs e)
+        {
+            Console.WriteLine("", e);
+            Console.ForegroundColor = ConsoleColor.Red;
+            YouAreDead();
+            Thread.Sleep(1200);
+
+            Console.ForegroundColor = ConsoleColor.White;
+            YouAreDead();
+            Thread.Sleep(1200);
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            YouAreDead();
+
+        }
+
+        private void YouAreDead()
+        {
+
+            string logo = "YOU ARE DEAD!!!!! I told you that you would die!!!";
+            Console.Clear();
+            Console.SetCursorPosition((Console.LargestWindowWidth / 2) - (logo.Length / 2), Console.LargestWindowHeight/2);
+            Console.WriteLine(logo);
+        }
 
 
     }

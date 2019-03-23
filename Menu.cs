@@ -137,7 +137,7 @@ namespace SpaceCadets
 
                 Console.WriteLine($"Your trip to {toPlanet.PlanetName} will take approximately {form.TravelTime(selectedSpeed, distanceToPlanet)} years\nDo you accept?");
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("\n[Janet] Press 'Y' for yes or 'N'....please pick yes");
+                Console.Write("\n[Janet] Press 'Y' for yes or 'N'....please pick yes: ");
                 ConsoleKeyInfo option = new ConsoleKeyInfo();
                 bool valid = true;
                 Movement game = new Movement();

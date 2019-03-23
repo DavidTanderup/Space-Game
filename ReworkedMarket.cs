@@ -175,7 +175,8 @@ namespace SpaceCadets
             {
                 while (!leave)
                 {
-                    Console.WriteLine($"Are you sure you want to buy {desiredQuantity} for {price}?");
+                    Console.WriteLine("[Janet] Press 'Y' for yes and 'N' for no");
+                    Console.Write($"\nAre you sure you want to buy {desiredQuantity} for {price}?: ");
                     //sure you want to buy/ops
                     ConsoleKeyInfo buyOption;
                     buyOption = Console.ReadKey();
