@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace SpaceCadets
 {
-    class MarketPlace  
+    class MarketPlace
     {
 
         public void Greeting()
@@ -218,7 +218,7 @@ namespace SpaceCadets
         public void sellMenu(Characters self, List<(MarketResources resource, int quantity)> PlanetInventory)
         {
             Formulas form = new Formulas();
-            
+
             while (true)
             {
                 Console.Clear();
@@ -279,27 +279,28 @@ namespace SpaceCadets
         public void sellSelection(Characters self, List<(MarketResources resource, int quantity)> PlanetInventory, int selection)
         {
             //how much would they like to sell?
-        MarketResources resource = self.inventory[selection].resource;
-        int quantity = self.inventory[selection].quantity;
-        (MarketResources resource, int quantity) newPlanetListElement = PlanetInventory[selection];
+            MarketResources resource = self.inventory[selection].resource;
+            int quantity = self.inventory[selection].quantity;
+            (MarketResources resource, int quantity) newPlanetListElement = PlanetInventory[selection];
             bool leave = false;
-        //do they have space?
-        //do they have money?
-        //do they want to buy?
-        Console.Clear();
+            //do they have space?
+            //do they have money?
+            //do they want to buy?
+            Console.Clear();
             Console.WriteLine($"Item: {resource.Name}\n" +
-                $"Cost: {resource.Price}\n" +
-                $"Units in inventory: {quantity}\n" +
-                $"\n" +
-                $"How much would you like to sell?");
-        bool success = int.TryParse(Console.ReadLine(), out int desiredQuantity);
-        double price = desiredQuantity * resource.Price;
+                   $"Cost: {resource.Price}\n" +
+                   $"Units in inventory: {quantity}\n" +
+                   $"\n");
+            Console.Write("How much would you like to sell?: ");
+            bool success = int.TryParse(Console.ReadLine(), out int desiredQuantity);
+            double price = desiredQuantity * resource.Price;
 
             if (success && ((self.inventory[selection].quantity - desiredQuantity) >= 0))
             {
                 while (!leave)
                 {
                     Console.WriteLine($"Are you sure you want to sell {desiredQuantity} for {price}?");
+                    Console.Write("[Jane] Press 'Y' for yes and 'N' for no: ");
                     //sure you want to buy/ops
                     ConsoleKeyInfo buyOption;
                     buyOption = Console.ReadKey();
@@ -308,9 +309,9 @@ namespace SpaceCadets
                         case ConsoleKey.Y:
                             self.money += price; //sub cost
                             self.inventory[selection].quantity -= desiredQuantity;
-                                                                                //remove quantity from self.inventory
-                                                                                //add quantity to self.inventory
-                                                                                //Nasty workaround, shouldve made an array!
+                            //remove quantity from self.inventory
+                            //add quantity to self.inventory
+                            //Nasty workaround, shouldve made an array!
                             newPlanetListElement.quantity += desiredQuantity;
                             PlanetInventory.RemoveAt(selection);
                             PlanetInventory.Insert(selection, newPlanetListElement);
@@ -326,7 +327,7 @@ namespace SpaceCadets
                             continue;
                     }
 
-}
+                }
             }
             else
             {
@@ -344,6 +345,6 @@ namespace SpaceCadets
 
 
 
- 
+
 
 
