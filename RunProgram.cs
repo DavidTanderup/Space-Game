@@ -27,29 +27,36 @@ namespace SpaceCadets
             (MarketResources resource, int quantity)[] inventory =
             {(MarsBars, 0), (SunScreen, 0), (MoonPies, 0), (Honey, 0), (Kryptonite, 0), (Widgets, 0), (BugSpray, 0), (ZombieRepellent, 0)};
 
-            //SpaceShip spaceShip = new SpaceShip();
-            SpaceShip SpaceShipOptions = new SpaceShip();
+            Dialogue dialogue = new Dialogue();
 
+            SpaceShip SpaceShipOptions = new SpaceShip();
             Engines myEngine = SpaceShipOptions.Engine3;
             Fuel myFuel = SpaceShipOptions.Fuel3;
             Cargo myCargo = SpaceShipOptions.Cargo3;
-
             SpaceShip spaceShip = new SpaceShip(myEngine, myFuel, myCargo);
 
-            Characters PlayerOne = new Characters(5000, 20, planetList[1], "Bob",spaceShip, true, inventory);
-
             MarketPlace marketPlace = new MarketPlace();
-            Console.SetCursorPosition(Console.LargestWindowWidth / 2, 5);
             MarketResources thing = new MarketResources();
+            Characters PlayerOne = new Characters(5000, 20, planetList[1], "Bob", spaceShip, true, inventory);
+
+
             var list = thing.MarketGenerate(PlayerOne);
-           // PrettyColors();// 
+
+
+
+            Console.SetCursorPosition(Console.LargestWindowWidth / 2, 5);
+            PrettyColors();
+            PlayerInfo();
             Console.Clear();
-           // PlayerInfo();
-           // SoloShipShopIntro(PlayerOne);
-            
-            /// insert information co
-            
+            SoloShipShopIntro(PlayerOne);
+
             marketPlace.InTheMarketPlace(PlayerOne, list);
+
+
+
+            
+
+
         }
 
         private List<string> StarTader()
@@ -133,15 +140,20 @@ namespace SpaceCadets
             Thread.Sleep(4000);
             Console.WriteLine("\t\tWelcome to Space Trader");
             Console.WriteLine("\t\t=======================");
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\t\t\nA Game where the points are made up and the rules don't matter.");
             Thread.Sleep(4000);
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("\t\t\n[Janet] 'Unless you die'");
             Thread.Sleep(2500);
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\t\t\nThanks Janet...yes unless you die or you play games to win, in which case I wouldn't play this game,\n" +
                               "\t\tbecause you will not win. Ever");
             Thread.Sleep(4500);
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("\t\t\n[Janet] 'Unless they do'");
             Thread.Sleep(2700);
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\t\t\nObviously...");
             Thread.Sleep(2250);
             Console.WriteLine("\t\tWaiting for another cheeky remark from Janet?");
@@ -159,13 +171,17 @@ namespace SpaceCadets
                 switch (consoleKeyInfo.Key)
                 {
                     case ConsoleKey.D1:
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\t\tYou are truly boring");
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine("\t\t[Janet] 'That was a smart choice dear'");
                         Thread.Sleep(2000);
                         pete = false;
                         break;
                     case ConsoleKey.NumPad1:
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\t\tYou are truly boring");
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine("\t\t[Janet] 'That was a smart choice dear'");
                         Thread.Sleep(2000);
                         pete = false;
@@ -185,6 +201,61 @@ namespace SpaceCadets
                 }
 
             }
+
+        }
+        public void SoloShipShopIntro(Characters self)
+        {
+            MoonMarket moonMarket = new MoonMarket();
+            Dialogue dialogue = new Dialogue();
+            SoloTitle();
+            dialogue.S3_JanetIntro();
+            Thread.Sleep(2000);
+            bool stillHere = true; /// while the player is in the ship market
+            while (stillHere)
+            {
+
+                Console.Clear();
+                SoloTitle();
+                dialogue.ShipShopIntro_First();
+
+                ConsoleKeyInfo userInput = Console.ReadKey();
+                switch (userInput.Key)
+                {
+                    case ConsoleKey.D1:
+                        Console.Clear();
+                        Console.WriteLine("You are now the proud new owner of a:\n");
+                        Console.ReadLine();
+                        stillHere = true;
+                        break;
+                    case ConsoleKey.NumPad1:
+                        Console.Clear();
+                        Console.WriteLine("You bought a ship!!");
+                        Console.ReadLine();
+                        stillHere = true;
+                        break;
+                    case ConsoleKey.D2:
+                        stillHere = true;
+                        Console.Clear();
+                        dialogue.SolosSweetStory();
+                        Console.ReadLine();
+                        break;
+                    case ConsoleKey.NumPad2:
+                        stillHere = true;
+                        Console.Clear();
+                        dialogue.SolosSweetStory();
+                        Console.ReadLine();
+                        break;
+                    case ConsoleKey.Escape:
+                        Console.Clear();
+                        Console.WriteLine("\t\t\n\nYou have left Solo's Ship Shop #spaceboats");
+                        Console.ReadLine();
+                        stillHere = false;
+                        break;
+
+                }
+            }
+
+
 
         }
 
@@ -245,61 +316,6 @@ namespace SpaceCadets
 
 
 
-        public void SoloShipShopIntro(Characters self)
-        {
-            MoonMarket moonMarket = new MoonMarket();
-            Dialogue dialogue = new Dialogue();
-            SoloTitle();
-            dialogue.S3_JanetIntro();
-            Thread.Sleep(2000);
-            bool stillHere = true; /// while the player is in the ship market
-            while (stillHere)
-            {
-
-                Console.Clear();
-                SoloTitle();
-                dialogue.ShipShopIntro_First();
-
-                ConsoleKeyInfo userInput = Console.ReadKey();
-                switch (userInput.Key)
-                {
-                    case ConsoleKey.D1:
-                        Console.Clear();
-                        Console.WriteLine("You are now the proud new owner of a:\n");
-                        Console.ReadLine();
-                        stillHere = true;
-                        break;
-                    case ConsoleKey.NumPad1:
-                        Console.Clear();
-                        Console.WriteLine("You bought a ship!!");
-                        Console.ReadLine();
-                        stillHere = true;
-                        break;
-                    case ConsoleKey.D2:
-                        stillHere = true;
-                        Console.Clear();
-                        dialogue.SolosSweetStory();
-                        Console.ReadLine();
-                        break;
-                    case ConsoleKey.NumPad2:
-                        stillHere = true;
-                        Console.Clear();
-                        dialogue.SolosSweetStory();
-                        Console.ReadLine();
-                        break;
-                    case ConsoleKey.Escape:
-                        Console.Clear();
-                        Console.WriteLine("\t\t\n\nYou have left Solo's Ship Shop #spaceboats");
-                        Console.ReadLine();
-                        stillHere = false;
-                        break;
-
-                }
-            }
-
-
-
-        }
 
         private void SoloTitle()
         {
@@ -386,7 +402,7 @@ namespace SpaceCadets
             string secondLine = "The Universal Unification of the United Union for the Unequivocal Understanding or U5";
             string thirdLine = "as we call it here on Earth. It’s a dumb name but we didn’t come up with it.";
             string fourthLine = "Besides we have been told that the true majesty of the name is lost when translated";
-            string fifthLine = "from the Paladin language. The Paladins are the oldest and most advanced civilization"; 
+            string fifthLine = "from the Paladin language. The Paladins are the oldest and most advanced civilization";
             string sixthLine = "in the Galaxy… or so they claim. I mean seriously, it’s easy to say whatever you want";
             string seventhLine = "when no one can disprove what you say. We learned about 50 years ago that the Paladins";
             string eighthLine = "merged several time lines to create this one.Alternate realities are common knowledge now,";
@@ -401,18 +417,18 @@ namespace SpaceCadets
             int i = 0; /// The current list line.
             foreach (var item in solosSweetStory)
             {
-                Console.SetCursorPosition(Console.LargestWindowWidth / 2-solosSweetStory[8].Length/2, 10 + i);
+                Console.SetCursorPosition(Console.LargestWindowWidth / 2 - solosSweetStory[8].Length / 2, 10 + i);
                 Console.WriteLine(item);
                 Thread.Sleep(3000);
                 i++;
             }
-            
+
         }
     }
 
-   
 
 
 
-   
+
+
 }
