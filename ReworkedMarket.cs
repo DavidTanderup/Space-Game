@@ -229,9 +229,9 @@ namespace SpaceCadets
                 for (int i = 0; i < PlanetInventory.Count; i++)
                 {
                     self.inventory[i].resource.Price = form.ItemValue(self, self.inventory[i].resource);
-                    Console.WriteLine($"Item {i + 1}: {self.inventory[i].resource.Name} || Quantity: {self.inventory[i].quantity} || Price: {self.inventory[i].resource.Price}\n");
+                    Console.WriteLine($"Item {i + 1}: {self.inventory[i].resource.Name} || Quantity: {self.inventory[i].quantity} || Price: {self.inventory[i].resource.Price:C}\n");
                 }
-
+                Console.WriteLine("\n[Janet] Press the Escape Key to leave");
                 ConsoleKeyInfo userSelect;
                 userSelect = Console.ReadKey();
                 switch (userSelect.Key)
@@ -288,7 +288,7 @@ namespace SpaceCadets
             //do they want to buy?
             Console.Clear();
             Console.WriteLine($"Item: {resource.Name}\n" +
-                   $"Cost: {resource.Price}\n" +
+                   $"Cost: {resource.Price:C}\n" +
                    $"Units in inventory: {quantity}\n" +
                    $"\n");
             Console.Write("How much would you like to sell?: ");
