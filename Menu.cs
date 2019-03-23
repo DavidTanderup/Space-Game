@@ -128,6 +128,7 @@ namespace SpaceCadets
         {
             Formulas form = new Formulas();
             double distanceToPlanet = form.Dist2Points(self.location.PlanetCoordinate, toPlanet.PlanetCoordinate);
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Your max speed is {form.WarpSpeed(self.mySpaceShip.engines.speed)}");
             Console.Write($"Please enter a speed between zero and {self.mySpaceShip.engines.speed}: ");
             bool isValidSpeed = double.TryParse(Console.ReadLine(), out double selectedSpeed);
@@ -144,6 +145,7 @@ namespace SpaceCadets
 
                 while(valid)
                 {
+                    Console.ForegroundColor = ConsoleColor.White;
                     option = Console.ReadKey();
                     switch(option.Key)
                     {

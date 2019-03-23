@@ -68,11 +68,10 @@ namespace SpaceCadets
                         break;
 
                     case ConsoleKey.NumPad2:
-                        Console.Clear();
-                        Console.WriteLine("...");
-                        Thread.Sleep(500);
+                        sellMenu(self, planetInventory);
                         stillHere = true;
                         break;
+                        
 
                     case ConsoleKey.Escape:
                         menu.MainMenu(self);
@@ -88,14 +87,20 @@ namespace SpaceCadets
             while (true)
             {
                 Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine($"Please select an option to buy or sell if you have some." +
                     "\nWe're fair traders, we trade at face value." +
-                    $"\nYou've got {self.money}\n\n");
-
+                    $"\nYou've got {self.money:C}\n\n");
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                Console.WriteLine($"===========================================================" +
+                                  $"\n");
                 for (int i = 0; i < PlanetInventory.Count; i++)
                 {
-                    Console.WriteLine($"Item {i + 1}: {PlanetInventory[i].resource.Name} || Quantity: {PlanetInventory[i].quantity} || Price: {PlanetInventory[i].resource.Price}\n");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"Item {i + 1}: {PlanetInventory[i].resource.Name} || Quantity: {PlanetInventory[i].quantity} || Price: {PlanetInventory[i].resource.Price:C}\n");
                 }
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("\n[Janet] Press the Escape Key to leave");
 
                 ConsoleKeyInfo userSelect;
                 userSelect = Console.ReadKey();
@@ -163,11 +168,12 @@ namespace SpaceCadets
             //do they have money?
             //do they want to buy?
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Item: {resource.Name}\n" +
-                $"Cost: {resource.Price}\n" +
+                $"Cost: {resource.Price:C}\n" +
                 $"Units for Sale: {quantity}\n" +
-                $"\n" +
-                $"How much would you like to buy?");
+                $"\n");
+            Console.Write($"How much would you like to buy?: ");  
             bool success = int.TryParse(Console.ReadLine(), out int desiredQuantity);
             double price = desiredQuantity * resource.Price;
 
@@ -175,8 +181,10 @@ namespace SpaceCadets
             {
                 while (!leave)
                 {
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine("[Janet] Press 'Y' for yes and 'N' for no");
-                    Console.Write($"\nAre you sure you want to buy {desiredQuantity} for {price}?: ");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write($"\nAre you sure you want to buy {desiredQuantity} for {price:C}?: ");
                     //sure you want to buy/ops
                     ConsoleKeyInfo buyOption;
                     buyOption = Console.ReadKey();
@@ -222,15 +230,21 @@ namespace SpaceCadets
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine($"Please select an option to sell if you have some." +
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine($"Please select an option to buy or sell if you have some." +
                     "\nWe're fair traders, we trade at face value." +
-                    $"\nYou've got {self.money}\n\n");
+                    $"\nYou've got {self.money:C}\n\n");
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                Console.WriteLine($"===========================================================" +
+                                  $"\n");
 
                 for (int i = 0; i < PlanetInventory.Count; i++)
                 {
                     self.inventory[i].resource.Price = form.ItemValue(self, self.inventory[i].resource);
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"Item {i + 1}: {self.inventory[i].resource.Name} || Quantity: {self.inventory[i].quantity} || Price: {self.inventory[i].resource.Price:C}\n");
                 }
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("\n[Janet] Press the Escape Key to leave");
                 ConsoleKeyInfo userSelect;
                 userSelect = Console.ReadKey();
@@ -287,6 +301,7 @@ namespace SpaceCadets
             //do they have money?
             //do they want to buy?
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Item: {resource.Name}\n" +
                    $"Cost: {resource.Price:C}\n" +
                    $"Units in inventory: {quantity}\n" +
@@ -299,8 +314,9 @@ namespace SpaceCadets
             {
                 while (!leave)
                 {
-                    Console.WriteLine($"Are you sure you want to sell {desiredQuantity} for {price}?");
-                    Console.Write("\n[Jane] Press 'Y' for yes and 'N' for no: ");
+                    Console.WriteLine($"Are you sure you want to sell {desiredQuantity} for {price:C}?");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.Write("\n[Janet] Press 'Y' for yes and 'N' for no: ");
                     //sure you want to buy/ops
                     ConsoleKeyInfo buyOption;
                     buyOption = Console.ReadKey();
