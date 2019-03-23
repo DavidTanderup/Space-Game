@@ -24,6 +24,9 @@ namespace SpaceCadets
            // Characters PlayerOne = new Characters(5000, 20, planetList[1], "Bob",mySpace , true, );
             RunProgram runProgram = new RunProgram();
             runProgram.Run();
+
+           
+
             Console.ReadLine();
 
 
@@ -56,7 +59,11 @@ namespace SpaceCadets
             ////    //marketPlace.Greeting();
             ////    //marketPlace.ChoiceMenu();
 
+
             Planet planette = new Planet();
+
+            //Planet planet = new Planet();
+
             var ListofPlanets = planet.PlanetSystem();
             var Earth = ListofPlanets[0];
             //    var ProximaB = ListofPlanets[2];
