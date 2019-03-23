@@ -29,20 +29,7 @@ namespace SpaceCadets
             Console.ReadLine();                                              
 
 
-            Planet planette = new Planet();
 
-
-            var ListofPlanets = planet.PlanetSystem();
-            var Earth = ListofPlanets[0];
-            
-
-            SpaceShip SpaceShipOptions = new SpaceShip();
-
-            Engines myEngine = SpaceShipOptions.Engine1;
-            Fuel myFuel = SpaceShipOptions.Fuel1;
-            Cargo myCargo = SpaceShipOptions.Cargo1;
-
-            SpaceShip mySpaceShip = new SpaceShip(myEngine, myFuel, myCargo);
 
     
         }

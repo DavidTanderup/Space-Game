@@ -46,6 +46,7 @@ namespace SpaceCadets
 
             Console.SetCursorPosition(Console.LargestWindowWidth / 2, 5);
             PrettyColors();
+            Console.SetCursorPosition(Console.LargestWindowWidth / 2, 5);
             PlayerInfo();
             Console.Clear();
             SoloShipShopIntro(PlayerOne);
@@ -54,7 +55,7 @@ namespace SpaceCadets
 
 
 
-            
+
 
 
         }
@@ -159,7 +160,10 @@ namespace SpaceCadets
             Console.WriteLine("\t\tWaiting for another cheeky remark from Janet?");
             Thread.Sleep(2400);
             Console.WriteLine("\t\tI have a riddle for you");
+            Thread.Sleep(8000);
 
+            /// This is a delightful game that I learned as a child and use to play with my brother during long car trips.
+            /// My parents didn't find it as much fun as we did.
             bool pete = true;
             while (pete)
             {
@@ -216,6 +220,7 @@ namespace SpaceCadets
 
                 Console.Clear();
                 SoloTitle();
+
                 dialogue.ShipShopIntro_First();
 
                 ConsoleKeyInfo userInput = Console.ReadKey();
@@ -364,11 +369,22 @@ namespace SpaceCadets
         public void ShipShopIntro_First()
         {
             Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("sigh......");
+            Console.WriteLine("Fine.");
+            Thread.Sleep(2500);
             Console.WriteLine("\t\tWalking into the prestigious shop of the famed trader and part time Hero Hans Solo, you see the seasoned gentleman leaning on the counter." +
                               "\n\t\tHe looks surprising like one of the great actors Harrelson Rivercross");
             Thread.Sleep(2500);
+            Console.WriteLine("\t\tWith over the top good looks that Hollywood trys to protray as a 'normal guy' and a voice that sounds like he should be the voice for winners..." +
+                              "\t\t\nlike the New York Yankees, New England Patriots, or whatever Evil Empire you choose to cheer for.");
+            Thread.Sleep(2500);
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("[Janet] ......R2D2");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("blah blah.....so with his amazing good looks and voice that inspires people to be better he says...");
+            Thread.Sleep(2500);
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\n\t\t[Hans Solo]Welcome friend what can I do for you today?");
+            Console.WriteLine("\n\t\t[Hans Solo] Welcome friend what can I do for you today?");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\n\t\t1) I'd like to buy a ship");
             Console.WriteLine("\t\t2) What's all the commotion going on outside?");
@@ -382,11 +398,24 @@ namespace SpaceCadets
         public void ShipShopIntro_EverTimeAfter()
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("\t\tWalking into the prestigious shop of the famed trader and part time Hero Hans Solo, you see the seasoned gentleman leaning on the counter.");
-            Thread.Sleep(2500);
+            Console.WriteLine("\t\tsigh......");
+            Console.WriteLine("\t\tFine.");
+            Thread.Sleep(4500);
+            Console.WriteLine("\t\tWalking into the prestigious shop of the famed trader and part time Hero Hans Solo, you see the seasoned gentleman leaning on the counter." +
+                              "\n\t\tHe looks surprising like one of the great actors Harrelson Rivercross\n");
+            Thread.Sleep(4500);
+            Console.WriteLine("\t\tWith over the top good looks that Hollywood trys to protray as a 'normal guy' and a voice that sounds like he should be the voice for winners...");
+            Thread.Sleep(4500);
+            Console.WriteLine("\t\tlike the New York Yankees, New England Patriots, or whatever Evil Empire you choose to cheer for.");
+            Thread.Sleep(4500);
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("\t\t[Janet] ......R2D2");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\t\tblah blah.....so with his amazing good looks and voice that inspires people to be better he says...");
+            Thread.Sleep(4500);
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\n\t\tWelcome friend what can I do for you today?");
-            Thread.Sleep(1500);
+            Console.WriteLine("\t\t[Hans Solo] Welcome friend what can I do for you today?");
+            Thread.Sleep(2500);
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\n\t\t1) I'd like to upgrade a ship");
             Console.WriteLine("\n\t\t2) What's all the commotion going on outside?");
@@ -398,6 +427,8 @@ namespace SpaceCadets
         /// </summary>
         public void SolosSweetStory()
         {
+            string preLine1 = ("In a Galaxy Far Far Away");
+            string preLine2 = ("J/K I--N--G   (Just Kidding) It was right here in this galaxy");
             string firstLine = ("The year is 3019 and Earth is celebrating the 100th anniversary of joining");
             string secondLine = "The Universal Unification of the United Union for the Unequivocal Understanding or U5";
             string thirdLine = "as we call it here on Earth. It’s a dumb name but we didn’t come up with it.";
@@ -411,17 +442,26 @@ namespace SpaceCadets
             string eleventhLine = "of individuals being able to see into another timeline.";
 
 
-            List<string> solosSweetStory = new List<string>() {firstLine,secondLine,thirdLine,fourthLine,
+            List<string> solosSweetStory = new List<string>() {preLine1, preLine2, firstLine,secondLine,thirdLine,fourthLine,
                                                                fifthLine,sixthLine,seventhLine,eighthLine,
                                                                ninthLine,tenthLine,eleventhLine };
             int i = 0; /// The current list line.
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n\t\tWith a voice sounding like an Action Movie Trailer");
             foreach (var item in solosSweetStory)
             {
                 Console.SetCursorPosition(Console.LargestWindowWidth / 2 - solosSweetStory[8].Length / 2, 10 + i);
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(item);
                 Thread.Sleep(3000);
                 i++;
             }
+            Console.ForegroundColor = ConsoleColor.Red;
+            Thread.Sleep(3000);
+            Console.WriteLine("\n\n\t\tCool story Hans");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Thread.Sleep(3000);
+            Console.WriteLine("\n\n\t\t[Janet] if you are Ready Player One hit enter to continue");
 
         }
     }
