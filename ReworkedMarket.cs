@@ -300,7 +300,7 @@ namespace SpaceCadets
                 while (!leave)
                 {
                     Console.WriteLine($"Are you sure you want to sell {desiredQuantity} for {price}?");
-                    Console.Write("[Jane] Press 'Y' for yes and 'N' for no: ");
+                    Console.Write("\n[Jane] Press 'Y' for yes and 'N' for no: ");
                     //sure you want to buy/ops
                     ConsoleKeyInfo buyOption;
                     buyOption = Console.ReadKey();
