@@ -10,8 +10,8 @@ namespace SpaceCadets
     {
         public void MainMenu(Characters self)
         {
-            MarketResources item = new MarketResources();
-            item.MarketGenerate(self);
+            //MarketResources item = new MarketResources();
+            //item.MarketGenerate(self);
             
             Console.Clear();
             Console.SetCursorPosition(0, 0);
@@ -33,6 +33,12 @@ namespace SpaceCadets
 
                         case ConsoleKey.S:
                             Console.WriteLine("trade");
+                            MarketPlace marketPlace = new MarketPlace();
+                            MarketResources thing = new MarketResources();
+                            var list = thing.MarketGenerate(self);
+                            marketPlace.InTheMarketPlace(self, list);
+
+
                             break;
 
                         case ConsoleKey.M:
@@ -107,6 +113,8 @@ namespace SpaceCadets
                         case ConsoleKey.Y:
                             self.location = toPlanet;
                             game.MovementMain(self, distanceToPlanet, selectedSpeed);
+                            MarketResources item = new MarketResources();
+                            item.MarketGenerate(self);
                             valid = false;
                             break;
 

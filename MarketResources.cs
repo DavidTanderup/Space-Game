@@ -12,7 +12,7 @@ namespace SpaceCadets
         public string Name { get; set; }
         public double Price { get; set; }
 
-        public MarketResources()
+        public MarketResources() //random constructor
         {
             Planet something = new Planet();
             Home = something;

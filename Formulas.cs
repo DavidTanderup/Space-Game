@@ -29,7 +29,7 @@ namespace SpaceCadets
         }
 
 
-        public double ItemValue(SpaceCadets.Characters self, SpaceCadets.MarketResources item)
+        public double ItemValue(SpaceCadets.Characters self, SpaceCadets.MarketResources item) //value-upper based on distance
         {
             
             double Distance = Dist2Points(self.location.PlanetCoordinate, item.Home.PlanetCoordinate);

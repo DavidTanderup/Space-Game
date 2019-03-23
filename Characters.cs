@@ -15,13 +15,25 @@ namespace SpaceCadets
         public SpaceShip mySpaceShip = new SpaceShip();
         public bool Alive;
         //public List<(item item, double quantity)> inventory;
-        public List<(MarketResources, int)> inventory;
-        
-        //skills
-        //distance traveled
+        public (MarketResources resource, int quantity)[] inventory = new (MarketResources resource, int quantity)[8];
 
 
-        public Characters(int money, double Age, Planet location, string name, SpaceShip mySpaceShip, bool Alive)
+
+
+
+
+
+
+
+    
+    //modify cargo capacity
+
+
+    //skills
+    //distance traveled
+
+
+    public Characters(int money, double Age, Planet location, string name, SpaceShip mySpaceShip, bool Alive, (MarketResources, int)[] inventory)
         {           
             this.money = money;
             this.Age = Age;
@@ -29,7 +41,8 @@ namespace SpaceCadets
             this.name = name;
             this.mySpaceShip = mySpaceShip;
             this.Alive = Alive;
-
+            this.inventory = inventory;
+            
             
 
 
