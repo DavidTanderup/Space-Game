@@ -13,6 +13,7 @@ namespace SpaceCadets
 
         public void Run()
         {
+            Dialogue dialogue = new Dialogue();
             Planet planet = new Planet();
             var planetList = planet.PlanetSystem();
 
@@ -27,7 +28,6 @@ namespace SpaceCadets
             (MarketResources resource, int quantity)[] inventory =
             {(MarsBars, 0), (SunScreen, 0), (MoonPies, 0), (Honey, 0), (Kryptonite, 0), (Widgets, 0), (BugSpray, 0), (ZombieRepellent, 0)};
 
-            Dialogue dialogue = new Dialogue();
 
             SpaceShip SpaceShipOptions = new SpaceShip();
             Engines myEngine = SpaceShipOptions.Engine3;
@@ -364,15 +364,15 @@ namespace SpaceCadets
         public void ShipShopIntro_First()
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("\t\tWalking into the prestigious shop of the famed trader and part time Hero Hans Solo, you see the seasoned gentleman leaning on the counter.");
+            Console.WriteLine("\t\tWalking into the prestigious shop of the famed trader and part time Hero Hans Solo, you see the seasoned gentleman leaning on the counter." +
+                              "\n\t\tHe looks surprising like one of the great actors Harrelson Rivercross");
             Thread.Sleep(2500);
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\n\t\tWelcome friend what can I do for you today?");
-            Thread.Sleep(1500);
+            Console.WriteLine("\n\t\t[Hans Solo]Welcome friend what can I do for you today?");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\n\t\t1) I'd like to buy a ship");
-            Console.WriteLine("\n\t\t2) What's all the commotion going on outside?");
-            Console.WriteLine("\n\n\t\tExit [Escape Key]");
+            Console.WriteLine("\t\t2) What's all the commotion going on outside?");
+            Console.WriteLine("\n\t\tExit [Escape Key]");
         }
 
         /// <summary>

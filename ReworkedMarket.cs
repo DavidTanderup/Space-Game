@@ -41,7 +41,7 @@ namespace SpaceCadets
             Console.Clear();
             bool stillHere = true;
             Menus menu = new Menus();
-
+            Console.SetCursorPosition(Console.LargestWindowWidth / 2, 5);
             ChoiceMenuHeader();
 
             while (stillHere)
@@ -49,6 +49,7 @@ namespace SpaceCadets
 
                 ConsoleKeyInfo userInput = Console.ReadKey();
                 Console.Clear();
+                Console.SetCursorPosition(Console.LargestWindowWidth / 2, 5);
                 ChoiceMenuHeader();
 
                 switch (userInput.Key)
