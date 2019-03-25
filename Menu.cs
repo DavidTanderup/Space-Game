@@ -11,6 +11,7 @@ namespace SpaceCadets
     {
         public void MainMenu(Characters self)
         {
+            Planet locale = new Planet();
             Console.Clear();            
             Console.SetCursorPosition(Console.LargestWindowWidth/3, 0);
             Console.WriteLine($"You are {self.Age} years old at the planet {self.location.PlanetName}");
@@ -19,7 +20,8 @@ namespace SpaceCadets
             Console.WriteLine($"You've got about {self.mySpaceShip.fuel.weight / 100}  LY of fuel.");
 
             Console.SetCursorPosition(Console.LargestWindowWidth / 3, 4);
-            Console.WriteLine("T- Travel S-Trade");
+            Console.WriteLine("T- Travel S-Trade M-ShipShop");
+           
             while (true)
             {
                 ConsoleKeyInfo keyInfo;
@@ -58,8 +60,13 @@ namespace SpaceCadets
                             MarketResources thing = new MarketResources();
                             var list = thing.MarketGenerate(self);
                             marketPlace.InTheMarketPlace(self, list);
+                            break;
 
-
+                        case ConsoleKey.M:
+                            Console.Clear();
+                            Console.WriteLine("Welcome to the ShipShop!");
+                            MoonMarket shipshop = new MoonMarket();
+                            shipshop.moonMarketMenu(self);
                             break;
 
                         
